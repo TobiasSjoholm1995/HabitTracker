@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\HabitsPage.xaml.cs">
+      <DependentUpon>HabitsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HabitDetailPage.xaml.cs">
+      <DependentUpon>HabitDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewHabitPage.xaml.cs">
+      <DependentUpon>NewHabitPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

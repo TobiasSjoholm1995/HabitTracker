@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitTracker.Views.HabitDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="20" Padding="15">
+        
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Name:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" />
+            <Label Text="{Binding Name}" FontSize="Medium"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Score:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold"  />
+            <Label Text="{Binding Score}" FontSize="Medium"/>
+        </StackLayout>
+    </StackLayout>
+    
+</ContentPage>
