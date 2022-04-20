@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\InfoPage.xaml.cs">
+      <DependentUpon>InfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\HabitsPage.xaml.cs">
       <DependentUpon>HabitsPage.xaml</DependentUpon>
     </Compile>

@@ -60,8 +60,8 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <FlyoutItem Title="Home" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+    <FlyoutItem Title="Info" Icon="icon_about.png">
+        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:InfoPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Habits" Icon="icon_feed.png">
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
@@ -75,9 +75,9 @@
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid>
-                <Label Text="Habit Tracker" FontAttributes="Bold" FontSize="Caption"/>
-            </Grid>
+            <StackLayout HorizontalOptions="Center" BackgroundColor="{StaticResource Primary}">
+                <Label Text="Habit Tracker" FontAttributes="Bold" FontSize="Title" Padding="10" HorizontalOptions="Center" TextColor="White"/>
+            </StackLayout>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 

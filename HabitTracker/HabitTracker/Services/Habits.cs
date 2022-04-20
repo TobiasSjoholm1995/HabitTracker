@@ -5,6 +5,13 @@ using System.Threading.Tasks;
 namespace HabitTracker.Services
 {
 
+    public interface IHabits
+    {
+        List<Habit> Get();
+        Task Add(Habit habit);
+        Task Remove(Habit habit);
+    }
+
     public class Habits : IHabits
     {
         private List<Habit> _habits;

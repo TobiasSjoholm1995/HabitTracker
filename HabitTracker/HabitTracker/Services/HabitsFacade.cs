@@ -1,6 +1,12 @@
 ﻿
 namespace HabitTracker.Services
 {
+    public interface IHabitFacade
+    {
+        IHabits All();
+        IHabits Completed();
+    }
+
     public class HabitsFacade : IHabitFacade
     {
         private Habits _all;
