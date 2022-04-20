@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
@@ -22,6 +23,9 @@
                 <Label FontSize="Body" Text=" &quot;Good habits are the key to all success&quot; " FontAttributes="Italic" Padding="0, 10, 0, 10"/>
             </StackLayout>
         </ScrollView>
+        
+        <Label Grid.Row="2" FontSize="Body" Text="Created by: Tobias Sjöholm" Padding="30"/>
+        
     </Grid>
 
 </ContentPage>

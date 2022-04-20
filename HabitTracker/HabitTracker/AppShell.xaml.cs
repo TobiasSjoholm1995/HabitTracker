@@ -17,7 +17,7 @@ namespace HabitTracker
         private void OnExitClicked(object sender, EventArgs e)
         {
             Process.GetCurrentProcess().CloseMainWindow();
-            // System.Diagnostics.Process.GetCurrentProcess().Kill();
+            //System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }
 }

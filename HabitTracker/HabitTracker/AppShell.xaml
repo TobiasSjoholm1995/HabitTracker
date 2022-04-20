@@ -70,8 +70,8 @@
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
     </FlyoutItem>
 
-    <MenuItem Text="Exit" StyleClass="MenuItemLayoutStyle" Clicked="OnExitClicked">
-    </MenuItem>
+    <MenuItem Text="Exit" StyleClass="MenuItemLayoutStyle" Clicked="OnExitClicked"/>
+
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
