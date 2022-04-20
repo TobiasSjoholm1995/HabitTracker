@@ -142,4 +142,7 @@
       <Name>HabitTracker</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_calander.png" />
+  </ItemGroup>
 </Project>
