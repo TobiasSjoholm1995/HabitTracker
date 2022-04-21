@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HabitTracker.ViewModels
@@ -23,10 +24,10 @@ namespace HabitTracker.ViewModels
         public HabitDetailViewModel()
         {
             Title = "Habit";
-            DeleteHabitCommand = new Command(OnDeleteHabit);
+            DeleteHabitCommand = new Command(async () => await OnDeleteHabit());
         }
 
-        private async void OnDeleteHabit()
+        private async Task OnDeleteHabit()
         {
             await AllHabits.Remove(_habit);
             await GoToPreviousPage();
