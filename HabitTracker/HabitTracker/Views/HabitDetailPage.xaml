@@ -6,21 +6,32 @@
              Title="{Binding Title}">
 
     <ContentPage.BindingContext>
-        <vm:CalenderViewModel />
+        <vm:HabitDetailViewModel />
     </ContentPage.BindingContext>
 
-    
-    <StackLayout Spacing="20" Padding="15">
-        
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Name:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" />
-            <Label Text="{Binding Name}" FontSize="Medium"/>
-        </StackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteHabitCommand}" />
+    </ContentPage.ToolbarItems>
 
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Score:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold"  />
-            <Label Text="{Binding Score}" FontSize="Medium"/>
-        </StackLayout>
+    <StackLayout Spacing="20" Padding="15">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Name:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding Name}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Score:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding Score}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
     </StackLayout>
     
 </ContentPage>

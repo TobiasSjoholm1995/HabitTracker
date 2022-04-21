@@ -32,6 +32,7 @@
                             Text="{Binding Score}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="16"/>
+                        
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"

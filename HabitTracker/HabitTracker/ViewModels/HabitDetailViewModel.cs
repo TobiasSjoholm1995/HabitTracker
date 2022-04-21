@@ -1,4 +1,5 @@
-﻿using HabitTracker.Services;
+﻿using HabitTracker.Models;
+using HabitTracker.Services;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -14,6 +15,22 @@ namespace HabitTracker.ViewModels
         private string _id;
         private string _name;
         private string _score;
+        private Habit _habit;
+
+        public Command DeleteHabitCommand { get; }
+
+
+        public HabitDetailViewModel()
+        {
+            Title = "Habit";
+            DeleteHabitCommand = new Command(OnDeleteHabit);
+        }
+
+        private async void OnDeleteHabit()
+        {
+            await AllHabits.Remove(_habit);
+            await GoToPreviousPage();
+        }
 
         public string Id { get; set; }
 
@@ -46,14 +63,13 @@ namespace HabitTracker.ViewModels
         {
             try
             {
-                var habit = AllHabits.Get().Where(h => string.Equals(h.Id, id, StringComparison.InvariantCulture)).FirstOrDefault();
+                _habit = AllHabits.Get().Where(h => string.Equals(h.Id, id, StringComparison.InvariantCulture)).FirstOrDefault();
 
-                if(habit == null)
+                if(_habit == null)
                     throw new Exception("Failed to Load habit");
 
-                Id    = habit.Id;
-                Name  = habit.Name;
-                Score = habit.Score.ToString(CultureInfo.InvariantCulture);
+                Name  = _habit.Name;
+                Score = _habit.Score.ToString(CultureInfo.InvariantCulture);
             }
             catch (Exception ex)
             {

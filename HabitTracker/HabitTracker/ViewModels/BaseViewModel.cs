@@ -1,6 +1,7 @@
 ﻿using HabitTracker.Models;
 using HabitTracker.Services;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace HabitTracker.ViewModels
@@ -34,6 +35,11 @@ namespace HabitTracker.ViewModels
         {
             get { return title; }
             set { SetProperty(ref title, value); }
+        }
+
+        public async Task GoToPreviousPage()
+        {
+            await Shell.Current.GoToAsync("..");
         }
 
     }

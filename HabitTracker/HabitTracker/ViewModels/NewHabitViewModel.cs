@@ -66,8 +66,7 @@ namespace HabitTracker.ViewModels
 
         private async void OnCancel()
         {
-            var currentPage = "..";
-            await Shell.Current.GoToAsync(currentPage);
+            await GoToPreviousPage();
         }
 
         private async void OnSave()
@@ -80,8 +79,7 @@ namespace HabitTracker.ViewModels
 
             await AllHabits.Add(habit);
 
-            var currentPage = "..";
-            await Shell.Current.GoToAsync(currentPage);
+            await GoToPreviousPage();
         }
     }
 }
