@@ -9,7 +9,6 @@ namespace HabitTracker.Views
         public HabitDetailPage()
         {
             InitializeComponent();
-            BindingContext = new HabitDetailViewModel();
         }
     }
 }

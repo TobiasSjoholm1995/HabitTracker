@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HabitTracker.Views.HabitsPage"
-             Title="{Binding Title}"
-             xmlns:local="clr-namespace:HabitTracker.ViewModels"  
-             xmlns:model="clr-namespace:HabitTracker.Models"  
-             x:Name="BrowseHabitPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:model="clr-namespace:HabitTracker.Models" xmlns:local="clr-namespace:HabitTracker.ViewModels"
+            xmlns:vm="clr-namespace:HabitTracker.ViewModels"
+             x:Class="HabitTracker.Views.CalenderPage">
+
+    <ContentPage.BindingContext>
+        <vm:CalenderViewModel />
+    </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New" Command="{Binding AddHabitCommand}" />
+        <ToolbarItem Text="Add" Command="{Binding AddHabitCommand}" />
     </ContentPage.ToolbarItems>
 
-    
-    <RefreshView x:DataType="local:HabitsViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+
+    <RefreshView x:DataType="local:CalenderViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding Habits}"
                 SelectionMode="None">
@@ -23,7 +24,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <Label Grid.Column="0"
                             Text="{Binding Name}" 
                             Style="{DynamicResource ListItemTextStyle}" 

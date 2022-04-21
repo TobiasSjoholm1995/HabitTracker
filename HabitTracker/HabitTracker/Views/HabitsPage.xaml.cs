@@ -5,13 +5,13 @@ namespace HabitTracker.Views
 {
     public partial class HabitsPage : ContentPage
     {
-        HabitViewModel _viewModel;
+        HabitsViewModel _viewModel;
 
         public HabitsPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new HabitViewModel();
+            BindingContext = _viewModel = new HabitsViewModel();
         }
 
         protected override void OnAppearing()

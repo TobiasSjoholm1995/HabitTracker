@@ -36,7 +36,7 @@ namespace HabitTracker.Models
 
     public static class HabitConverter
     {
-        private const char Separator    = '#';
+        public const char Separator     = '#';
         private const string DateFormat = "yyyy-MM-dd HH:mm:ss";
         private static readonly CultureInfo Culture = CultureInfo.InvariantCulture;
 
@@ -60,33 +60,20 @@ namespace HabitTracker.Models
             var columns = line.Split(Separator);
             var error = new Exception("The database is invalid.");
 
-            if (columns.Length >= 5)
+            // >= is for forward compatiblility incase extensions happens in the future
+            if (columns.Length >= 5) 
             {
                 return new Habit
                 {
-                    Name     = GetName(columns, columns.Length - 5) ?? throw error,
-                    Id       = columns[columns.Length - 4],
-                    Date     = DateTime.ParseExact(columns[columns.Length - 3], DateFormat, Culture),
-                    Favorite = bool.Parse(columns[columns.Length - 2]),
-                    Score    = int.Parse(columns[columns.Length - 1], NumberStyles.Any, Culture)
+                    Name     = columns[0],
+                    Id       = columns[1],
+                    Date     = DateTime.ParseExact(columns[2], DateFormat, Culture),
+                    Favorite = bool.Parse(columns[3]),
+                    Score    = int.Parse(columns[4], NumberStyles.Any, Culture)
                 };
             }
 
             throw error;
-        }
-
-        private static string GetName(string[] columns, int index)
-        {
-            if (columns == null || columns.Length <= index)
-                return null;
-
-            var builder = new StringBuilder();
-
-            for (int i = 0; i <= index; i++)
-                builder.Append(columns[i] + Separator);
-
-            var name = builder.ToString();
-            return name.Length > 1 ? name.Substring(0, name.Length - 1) : null;
         }
 
     }

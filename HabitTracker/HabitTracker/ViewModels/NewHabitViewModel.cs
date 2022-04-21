@@ -1,4 +1,5 @@
 ﻿using HabitTracker.Models;
+using HabitTracker.Services;
 using System;
 using System.Globalization;
 using Xamarin.Forms;
@@ -24,9 +25,18 @@ namespace HabitTracker.ViewModels
             set => SetProperty(ref _score, value);
         }
 
+        private string _error;
+        public string Error
+        {
+            get => _error;
+            set => SetProperty(ref _error, value);
+        }
+
 
         public NewHabitViewModel()
         {
+            Score = "1";
+            Error = string.Empty;
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
             PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
@@ -35,8 +45,23 @@ namespace HabitTracker.ViewModels
 
         private bool ValidateSave()
         {
-            return !string.IsNullOrWhiteSpace(_name)
-                && int.TryParse(_score, out _);
+            if(!string.IsNullOrEmpty(_name) && _name.Contains(HabitConverter.Separator.ToString(CultureInfo.InvariantCulture)))
+            {
+                Error = "Name has invalid characters";
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(_score) 
+                && !string.Equals(_score, "-", StringComparison.InvariantCultureIgnoreCase) 
+                && !int.TryParse(_score, out _))
+            {
+                Error = "Score must be a integer";
+                return false;
+            }
+
+            Error = string.Empty;
+
+            return !string.IsNullOrWhiteSpace(_name) && int.TryParse(_score, out _);
         }
 
         private async void OnCancel()

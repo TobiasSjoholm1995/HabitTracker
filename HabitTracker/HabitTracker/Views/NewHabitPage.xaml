@@ -18,7 +18,9 @@
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
-            
+
+            <Label Text="{Binding Error}" FontSize="Medium" TextColor="Red" />
+
         </StackLayout>
     </ContentPage.Content>
     

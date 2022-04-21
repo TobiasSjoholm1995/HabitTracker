@@ -69,7 +69,7 @@
     </Shell.FlyoutHeaderTemplate>
 
     <FlyoutItem Title="Calender" Icon="icon_calender.png">
-        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
+        <ShellContent Route="CalenderPage" ContentTemplate="{DataTemplate local:CalenderPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Habits" Icon="icon_feed.png">
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
