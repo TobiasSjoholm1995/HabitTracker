@@ -68,14 +68,14 @@
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="Info" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:InfoPage}" />
+    <FlyoutItem Title="Calender" Icon="icon_calender.png">
+        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Habits" Icon="icon_feed.png">
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Calender" Icon="icon_calander.png">
-        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
+    <FlyoutItem Title="Info" Icon="icon_about.png">
+        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:InfoPage}" />
     </FlyoutItem>
 
     <MenuItem Text="Exit" StyleClass="MenuItemLayoutStyle" Clicked="OnExitClicked"/>

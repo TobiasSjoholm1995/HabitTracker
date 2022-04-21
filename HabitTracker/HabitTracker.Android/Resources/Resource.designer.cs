@@ -11683,7 +11683,7 @@ namespace HabitTracker.Droid
 			public const int icon_about = 2131165296;
 			
 			// aapt resource value: 0x7F070071
-			public const int icon_calander = 2131165297;
+			public const int icon_calender = 2131165297;
 			
 			// aapt resource value: 0x7F070072
 			public const int icon_feed = 2131165298;
