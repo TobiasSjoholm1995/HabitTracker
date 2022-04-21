@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
             <Label Text="Name" FontSize="Medium" FontAttributes="Bold" />
-            <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" MaxLength="32" />
+            <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" MaxLength="64" />
 
             <Label Text="Score" FontSize="Medium" FontAttributes="Bold"  />
             <Editor Text="{Binding Score, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" MaxLength="6" />
