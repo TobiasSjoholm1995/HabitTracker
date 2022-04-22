@@ -10,10 +10,6 @@
         <conv:IntToColorConverter x:Key="intColorConverter" />
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddHabitCommand}" />
-    </ContentPage.ToolbarItems>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

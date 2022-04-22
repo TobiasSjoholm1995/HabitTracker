@@ -10,6 +10,8 @@ using static HabitTracker.Constants;
 
 namespace HabitTracker.ViewModels
 {
+    [QueryProperty(nameof(Time), nameof(Time))]
+
     class CalenderDailyViewModel : BaseViewModel
     {
         private Habit _selected;
@@ -23,6 +25,21 @@ namespace HabitTracker.ViewModels
         public Command NextDayCommand { get; }
         public Command TodayCommand { get; }
 
+        public string Time
+        {
+            get
+            {
+                return _time.ToString(ViewDateFormat);
+            }
+            set
+            {
+                if(DateTime.TryParseExact(value, ViewDateFormat, Culture, DateTimeStyles.AssumeUniversal, out var date))
+                {
+                    _time = date;
+                    LoadHabits();
+                }
+            }
+        }
 
         public CalenderDailyViewModel()
         {

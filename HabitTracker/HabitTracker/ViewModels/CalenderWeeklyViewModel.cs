@@ -1,4 +1,5 @@
 ﻿using HabitTracker.Models;
+using HabitTracker.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +17,6 @@ namespace HabitTracker.ViewModels
 
         public ObservableCollection<Habit> Habits { get; }
         public Command LoadHabitsCommand { get; }
-        public Command AddHabitCommand { get; }
         public Command<Habit> HabitClickedCommand { get; }
         public Command PreviousWeekCommand { get; }
         public Command NextWeekCommand { get; }
@@ -30,7 +30,6 @@ namespace HabitTracker.ViewModels
 
             LoadHabitsCommand    = new Command(LoadHabits);
             HabitClickedCommand  = new Command<Habit>(OnHabitSelected);
-            AddHabitCommand      = new Command(OnAddHabit);
             PreviousWeekCommand  = new Command(OnPreviousWeek);
             NextWeekCommand      = new Command(OnNextWeek);
             TodayCommand         = new Command(OnGoToToday);
@@ -63,7 +62,7 @@ namespace HabitTracker.ViewModels
 
         private void SetTitle()
         {
-            Title = "Week " + GetWeekNr(_time) + "  " + GetScore();
+            Title = "Week " + GetWeekNr(_time) + "   " + GetScore();
         }
 
         private string GetScore()
@@ -114,7 +113,8 @@ namespace HabitTracker.ViewModels
                     var item   = new Habit
                     {
                         Name  = day.ToString("dddd"),
-                        Score = habits.Sum(h => h.Score)
+                        Score = habits.Sum(h => h.Score),
+                        Date  = day
                     };
 
                     Habits.Add(item);
@@ -144,18 +144,12 @@ namespace HabitTracker.ViewModels
             }
         }
 
-        private async void OnAddHabit(object obj)
-        {
-            //await Shell.Current.GoToAsync($"{nameof(SelectHabitPage)}?{nameof(SelectHabitViewModel.Time)}={_time.ToString(ViewDateFormat, Culture)}");
-
-        }
-
         async void OnHabitSelected(Habit item)
         {
             if (item == null)
                 return;
 
-            //await Shell.Current.GoToAsync($"{nameof(HabitDetailCalenderPage)}?{nameof(HabitDetailCalenderViewModel.ID)}={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(CalenderDailyPage)}?{nameof(CalenderDailyViewModel.Time)}={item.Date.ToString(ViewDateFormat)}", true);
         }
 
     }
