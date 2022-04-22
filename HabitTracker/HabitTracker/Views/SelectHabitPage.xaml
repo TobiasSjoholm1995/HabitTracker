@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:model="clr-namespace:HabitTracker.Models" 
-             xmlns:local="clr-namespace:HabitTracker.ViewModels"
+             xmlns:local="clr-namespace:HabitTracker.ViewModels" 
+             xmlns:conv="clr-namespace:HabitTracker.Converters"
              x:Class="HabitTracker.Views.SelectHabitPage"
              Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <conv:IntToColorConverter x:Key="intColorConverter" />
+    </ContentPage.Resources>
 
     <RefreshView x:DataType="local:SelectHabitViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"
@@ -25,7 +30,7 @@
                         <Label Grid.Column="1" 
                             Text="{Binding Score}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="19"
+                            FontSize="18"
                             FontAttributes="Bold"
                             TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}"/>
 

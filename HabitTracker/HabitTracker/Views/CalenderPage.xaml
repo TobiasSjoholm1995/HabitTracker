@@ -35,7 +35,7 @@
                         <Label Grid.Column="1" 
                             Text="{Binding Score}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="19"
+                            FontSize="18"
                             FontAttributes="Bold"
                             TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}"/>
                         

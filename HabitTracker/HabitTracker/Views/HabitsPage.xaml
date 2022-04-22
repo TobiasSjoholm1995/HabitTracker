@@ -4,8 +4,13 @@
              x:Class="HabitTracker.Views.HabitsPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:HabitTracker.ViewModels"  
-             xmlns:model="clr-namespace:HabitTracker.Models"  
+             xmlns:model="clr-namespace:HabitTracker.Models" 
+             xmlns:conv="clr-namespace:HabitTracker.Converters"
              x:Name="BrowseHabitPage">
+
+    <ContentPage.Resources>
+        <conv:IntToColorConverter x:Key="intColorConverter" />
+    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New" Command="{Binding AddHabitCommand}" />
@@ -31,7 +36,7 @@
                         <Label Grid.Column="1" 
                             Text="{Binding Score}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="19"
+                            FontSize="18"
                             FontAttributes="Bold"
                             TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}"/>
                         
