@@ -3,6 +3,8 @@ using HabitTracker.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -21,12 +23,39 @@ namespace HabitTracker.ViewModels
         public CalenderViewModel()
         {
             _time = DateTime.Today;
-            Title = "Calender";
             Habits = new ObservableCollection<Habit>();
 
             LoadHabitsCommand   = new Command(LoadHabits);
             HabitClickedCommand = new Command<Habit>(OnHabitSelected);
             AddHabitCommand     = new Command(OnAddHabit);
+        }
+
+        private IEnumerable<Habit> GetHabits()
+        {
+            foreach (var habit in CompletedHabits.Get())
+                if (habit.Date.Date == _time.Date)
+                    yield return habit;
+        }
+
+        private void SetTitle()
+        {
+            Title = _time.ToString("dddd") + "  " + GetScore();
+        }
+
+        private string GetScore()
+        {
+            var habits = GetHabits()?.ToList();
+
+            if(habits == null || habits.Count == 0)
+                return string.Empty;
+
+            var scoreInteger = habits.Sum(h => h.Score);
+            var scoreString  = scoreInteger.ToString(CultureInfo.InvariantCulture);
+
+            if (scoreInteger > 0)
+                return "+" + scoreString;
+
+            return scoreString;
         }
 
         void LoadHabits()
@@ -36,9 +65,10 @@ namespace HabitTracker.ViewModels
             try
             {
                 Habits.Clear();
-                foreach (var habit in CompletedHabits.Get())
-                    if(habit.Date.Date == _time.Date)
-                        Habits.Add(habit);
+                foreach (var habit in GetHabits())
+                    Habits.Add(habit);
+
+                SetTitle();
             }
             finally
             {

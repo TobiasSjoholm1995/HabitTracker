@@ -4,8 +4,13 @@
              x:Class="HabitTracker.Views.CalenderPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:HabitTracker.ViewModels"  
-             xmlns:model="clr-namespace:HabitTracker.Models">
+             xmlns:model="clr-namespace:HabitTracker.Models" 
+             xmlns:conv="clr-namespace:HabitTracker.Converters">
 
+    <ContentPage.Resources>
+        <conv:IntToColorConverter x:Key="intColorConverter" />
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddHabitCommand}" />
     </ContentPage.ToolbarItems>
@@ -22,7 +27,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <Label Grid.Column="0"
                             Text="{Binding Name}" 
                             Style="{DynamicResource ListItemTextStyle}" 
@@ -30,7 +35,9 @@
                         <Label Grid.Column="1" 
                             Text="{Binding Score}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="16"/>
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}"/>
                         
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer 

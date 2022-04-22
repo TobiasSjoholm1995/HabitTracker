@@ -25,7 +25,9 @@
                         <Label Grid.Column="1" 
                             Text="{Binding Score}" 
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="16"/>
+                            FontSize="19"
+                            FontAttributes="Bold"
+                            TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}"/>
 
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer 
