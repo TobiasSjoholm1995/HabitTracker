@@ -32,6 +32,9 @@ namespace HabitTracker.Services
 
         public async Task Remove(Habit habit)
         {
+            if(habit == null)
+                return;
+
             var removed = _habits.Remove(habit);
 
             if (removed)

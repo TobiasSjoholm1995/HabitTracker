@@ -76,6 +76,10 @@
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Calender" Icon="icon_calender.png">
+        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderPage}" />
+    </FlyoutItem>
+
     <MenuItem Text="Exit" StyleClass="MenuItemLayoutStyle" Clicked="OnExitClicked"/>
 
 

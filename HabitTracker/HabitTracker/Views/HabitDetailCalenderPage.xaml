@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:HabitTracker.ViewModels"
+             x:Class="HabitTracker.Views.HabitDetailCalenderPage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:HabitDetailCalenderViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteHabitCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="20" Padding="15">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Name:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding Name}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Score:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding Score}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Date:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding Date}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

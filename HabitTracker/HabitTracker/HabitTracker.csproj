@@ -11,11 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\HabitsPage - Copy.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
     <Compile Update="Views\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\HabitsPage.xaml.cs">
-      <DependentUpon>HabitsPage.xaml</DependentUpon>
+    <Compile Update="Views\CalenderPage.xaml.cs">
+      <DependentUpon>CalenderPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\HabitDetailPage.xaml.cs">
       <DependentUpon>HabitDetailPage.xaml</DependentUpon>
@@ -23,5 +26,11 @@
     <Compile Update="Views\NewHabitPage.xaml.cs">
       <DependentUpon>NewHabitPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\HabitDetailCalenderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
