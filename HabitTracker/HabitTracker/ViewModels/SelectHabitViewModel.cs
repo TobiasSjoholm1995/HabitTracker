@@ -1,15 +1,15 @@
 ﻿using HabitTracker.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using Xamarin.Forms;
+using static HabitTracker.Constants;
 
 namespace HabitTracker.ViewModels
 {
+    [QueryProperty(nameof(Time), nameof(Time))]
+
     class SelectHabitViewModel : BaseViewModel
     {
-
         private Habit _selected;
 
         public ObservableCollection<Habit> Habits { get; }
@@ -57,17 +57,23 @@ namespace HabitTracker.ViewModels
             }
         }
 
+        public string Time { get; set; }
+
         async void OnHabitSelected(Habit item)
         {
             if (item == null)
+                return;
+
+            if(Time == null)
                 return;
 
             var habit = new Habit
             {
                 Name = item.Name,
                 Score = item.Score,
-                Date = DateTime.Now
+                Date = DateTime.ParseExact(Time, ViewDateFormat, Culture)
             };
+
             await CompletedHabits.Add(habit);
             await GoToPreviousPage();
         }

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Globalization;
-using System.Text;
+using static HabitTracker.Constants;
 
 namespace HabitTracker.Models
 {
@@ -22,7 +21,10 @@ namespace HabitTracker.Models
         public override bool Equals(object obj)
         {
             if(obj is Habit h) 
-                return string.Equals(h.Id, Id, StringComparison.InvariantCulture);
+                return string.Equals(h.Id, Id, Comparer);
+
+            if(obj is string s)
+                return string.Equals(s, Id, Comparer);
 
             return base.Equals(obj);
         }

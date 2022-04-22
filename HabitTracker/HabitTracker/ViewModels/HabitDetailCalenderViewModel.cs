@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using static HabitTracker.Constants;
 
 namespace HabitTracker.ViewModels
 {
@@ -72,7 +73,7 @@ namespace HabitTracker.ViewModels
                 throw new Exception("Failed to Load habit");
 
             Name = _habit.Name;
-            Date = _habit.Date.ToString("yyyy-MM-dd HH:mm");
+            Date = _habit.Date.ToString(ViewDateFormat, Culture);
             Score = _habit.Score.ToString(CultureInfo.InvariantCulture);
         }
     }

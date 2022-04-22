@@ -3,14 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using static HabitTracker.Constants;
 
 namespace HabitTracker.Converters
 {
     public static class HabitConverter
     {
-        public const char Separator     = '#';
-        private const string DateFormat = "yyyy-MM-dd HH:mm:ss";
-        private static readonly CultureInfo Culture = CultureInfo.InvariantCulture;
+        private const string ExactDateFormat = "yyyy-MM-dd HH:mm:ss";
 
         public static string Convert(Habit habit)
         {
@@ -19,7 +18,7 @@ namespace HabitTracker.Converters
 
             return habit.Name + Separator
                  + habit.Id   + Separator 
-                 + habit.Date.ToString(DateFormat, Culture) + Separator
+                 + habit.Date.ToString(ExactDateFormat, Culture) + Separator
                  + habit.Favorite.ToString(Culture) + Separator
                  + habit.Score.ToString(Culture) + Environment.NewLine;
         }
@@ -39,7 +38,7 @@ namespace HabitTracker.Converters
                 {
                     Name = columns[0],
                     Id = columns[1],
-                    Date = DateTime.ParseExact(columns[2], DateFormat, Culture),
+                    Date = DateTime.ParseExact(columns[2], ExactDateFormat, Culture),
                     Favorite = bool.Parse(columns[3]),
                     Score = int.Parse(columns[4], NumberStyles.Any, Culture)
                 };

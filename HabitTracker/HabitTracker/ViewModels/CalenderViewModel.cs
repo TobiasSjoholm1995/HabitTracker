@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using Xamarin.Forms;
+using static HabitTracker.Constants;
 
 namespace HabitTracker.ViewModels
 {
@@ -94,7 +94,8 @@ namespace HabitTracker.ViewModels
 
         private async void OnAddHabit(object obj)
         {
-            await Shell.Current.GoToAsync($"{nameof(SelectHabitPage)}");
+            await Shell.Current.GoToAsync($"{nameof(SelectHabitPage)}?{nameof(SelectHabitViewModel.Time)}={_time.ToString(ViewDateFormat, Culture)}");
+
         }
 
         async void OnHabitSelected(Habit item)

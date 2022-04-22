@@ -1,9 +1,8 @@
-﻿using HabitTracker.Converters;
-using HabitTracker.Models;
-using HabitTracker.Services;
-using System;
-using System.Globalization;
+﻿using System;
 using Xamarin.Forms;
+using System.Globalization;
+using HabitTracker.Models;
+using static HabitTracker.Constants;
 
 namespace HabitTracker.ViewModels
 {
@@ -20,6 +19,7 @@ namespace HabitTracker.ViewModels
             get => _name;
             set => SetProperty(ref _name, value);
         }
+
         public string Score
         {
             get => _score;
@@ -46,7 +46,7 @@ namespace HabitTracker.ViewModels
 
         private bool ValidateSave()
         {
-            if(!string.IsNullOrEmpty(_name) && _name.Contains(HabitConverter.Separator.ToString(CultureInfo.InvariantCulture)))
+            if(!string.IsNullOrEmpty(_name) && _name.Contains(Separator.ToString(Culture)))
             {
                 Error = "Name has invalid characters";
                 return false;
