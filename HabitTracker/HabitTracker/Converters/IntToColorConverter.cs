@@ -8,7 +8,7 @@ namespace HabitTracker.Converters
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             var val = value as int?;
-            var def  = Color.White;
+            var def  = Color.Black;
 
             if (val == null)
                 return def;
