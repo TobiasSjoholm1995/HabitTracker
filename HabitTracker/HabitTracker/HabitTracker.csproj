@@ -17,8 +17,8 @@
     <Compile Update="Views\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\CalenderPage.xaml.cs">
-      <DependentUpon>CalenderPage.xaml</DependentUpon>
+    <Compile Update="Views\CalenderDailyPage.xaml.cs">
+      <DependentUpon>CalenderDailyPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\HabitDetailPage.xaml.cs">
       <DependentUpon>HabitDetailPage.xaml</DependentUpon>
@@ -29,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\CalenderWeeklyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\HabitDetailCalenderPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

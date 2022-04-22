@@ -3,15 +3,15 @@ using Xamarin.Forms;
 
 namespace HabitTracker.Views
 {
-    public partial class CalenderPage : ContentPage
+    public partial class CalenderDailyPage : ContentPage
     {
-        CalenderViewModel _viewModel;
+        CalenderDailyViewModel _viewModel;
 
-        public CalenderPage()
+        public CalenderDailyPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new CalenderViewModel();
+            BindingContext = _viewModel = new CalenderDailyViewModel();
         }
 
         protected override void OnAppearing()

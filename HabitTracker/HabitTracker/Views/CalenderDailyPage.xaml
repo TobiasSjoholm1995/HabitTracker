@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HabitTracker.Views.CalenderPage"
+             x:Class="HabitTracker.Views.CalenderDailyPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:HabitTracker.ViewModels"  
              xmlns:model="clr-namespace:HabitTracker.Models" 
@@ -21,7 +21,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <RefreshView Grid.Row="0" x:DataType="local:CalenderViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <RefreshView Grid.Row="0" x:DataType="local:CalenderDailyViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
             <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding Habits}"
                 SelectionMode="Single">
@@ -47,7 +47,7 @@
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalenderViewModel}}, Path=HabitClickedCommand}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalenderDailyViewModel}}, Path=HabitClickedCommand}"		
                                 CommandParameter="{Binding .}"/>
                             </Grid.GestureRecognizers>
                         </Grid>
@@ -62,18 +62,23 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Text="L"      Command="{Binding LeftSwipeCommand}"/>
-            <Button Grid.Column="1" Text="Weekly" Command="{Binding LeftSwipeCommand}"/>
-            <Button Grid.Column="2" Text="R"      Command="{Binding RightSwipeCommand}"/>
+            <Grid    Grid.Column="0" Background="{StaticResource StandardBackground}" Grid.ColumnSpan="5"/>
+            <Button  Grid.Column="0" Text="〈"     BackgroundColor="Transparent" Command="{Binding PreviousDayCommand}" FontSize="Large"/>
+            <BoxView Grid.Column="1" Grid.Row="0"  BackgroundColor="Black" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+            <Button  Grid.Column="2" Text="Today"  BackgroundColor="Transparent" Command="{Binding TodayCommand}"/>
+            <BoxView Grid.Column="3" Grid.Row="0"  BackgroundColor="Black" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+            <Button  Grid.Column="4" Text="〉"     BackgroundColor="Transparent" Command="{Binding NextDayCommand}" FontSize="Large"/>
         </Grid>
 
         <Grid.GestureRecognizers>
-            <SwipeGestureRecognizer Direction="Left"  Command="{Binding LeftSwipeCommand}"/>
-            <SwipeGestureRecognizer Direction="Right" Command="{Binding RightSwipeCommand}"/>
+            <SwipeGestureRecognizer Direction="Left"  Command="{Binding PreviousDayCommand}"/>
+            <SwipeGestureRecognizer Direction="Right" Command="{Binding NextDayCommand}"/>
         </Grid.GestureRecognizers>
     </Grid>
 </ContentPage>

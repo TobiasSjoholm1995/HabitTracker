@@ -76,8 +76,12 @@
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:HabitsPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Calender" Icon="icon_calender.png">
-        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderPage}" />
+    <FlyoutItem Title="Calender - Daily" Icon="icon_calender.png">
+        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderDailyPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Calender - Weekly" Icon="icon_calender.png">
+        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderWeeklyPage}" />
     </FlyoutItem>
 
     <MenuItem Text="Exit" StyleClass="MenuItemLayoutStyle" Clicked="OnExitClicked"/>

@@ -1,0 +1,162 @@
+﻿using HabitTracker.Models;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
+using Xamarin.Forms;
+using static HabitTracker.Constants;
+
+namespace HabitTracker.ViewModels
+{
+    class CalenderWeeklyViewModel : BaseViewModel
+    {
+        private Habit _selected;
+        private DateTime _time;
+
+        public ObservableCollection<Habit> Habits { get; }
+        public Command LoadHabitsCommand { get; }
+        public Command AddHabitCommand { get; }
+        public Command<Habit> HabitClickedCommand { get; }
+        public Command PreviousWeekCommand { get; }
+        public Command NextWeekCommand { get; }
+        public Command TodayCommand { get; }
+
+
+        public CalenderWeeklyViewModel()
+        {
+            _time = DateTime.Today;
+            Habits = new ObservableCollection<Habit>();
+
+            LoadHabitsCommand    = new Command(LoadHabits);
+            HabitClickedCommand  = new Command<Habit>(OnHabitSelected);
+            AddHabitCommand      = new Command(OnAddHabit);
+            PreviousWeekCommand  = new Command(OnPreviousWeek);
+            NextWeekCommand      = new Command(OnNextWeek);
+            TodayCommand         = new Command(OnGoToToday);
+        }
+
+        private void OnGoToToday(object obj)
+        {
+            _time = DateTime.Today;
+            LoadHabits();
+        }
+
+        private void OnPreviousWeek(object obj)
+        {
+            _time = _time.AddDays(-7);
+            LoadHabits();
+        }
+
+        private void OnNextWeek(object obj)
+        {
+            _time = _time.AddDays(7);
+            LoadHabits();
+        }
+
+        private IEnumerable<Habit> GetHabits(DateTime time)
+        {
+            foreach (var habit in CompletedHabits.Get())
+                if (habit.Date.Date == time.Date)
+                    yield return habit;
+        }
+
+        private void SetTitle()
+        {
+            Title = "Week " + GetWeekNr(_time) + "  " + GetScore();
+        }
+
+        private string GetScore()
+        {
+            List<Habit> habits = new List<Habit>();
+
+            foreach (DayOfWeek e in Enum.GetValues(typeof(DayOfWeek)))
+            {
+                var day  = GetDay(_time, (int)e);
+                habits.AddRange(GetHabits(day));
+            }
+
+            if(habits == null || habits.Count == 0)
+                return string.Empty;
+
+            var scoreInteger = habits.Sum(h => h.Score);
+            var scoreString  = scoreInteger.ToString(Culture);
+
+            if (scoreInteger > 0)
+                return "+" + scoreString;
+
+            return scoreString;
+        }
+
+        public int GetWeekNr(DateTime time)
+        {
+            return Culture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+        }
+
+        public DateTime GetDay(DateTime time, int day)
+        {
+            int diff = (7 + ((int)time.DayOfWeek - StartOfWeek)) % 7;
+            return time.AddDays(-diff + day - StartOfWeek);
+        }
+
+        void LoadHabits()
+        {
+            IsBusy = true;
+
+            try
+            {
+                Habits.Clear();
+
+                for (int i = StartOfWeek; i < StartOfWeek + 7; i++)
+                {
+                    var day    = GetDay(_time, i);
+                    var habits = GetHabits(day).ToList();
+                    var item   = new Habit
+                    {
+                        Name  = day.ToString("dddd"),
+                        Score = habits.Sum(h => h.Score)
+                    };
+
+                    Habits.Add(item);
+                }
+
+                SetTitle();
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedItem = null;
+        }
+
+        public Habit SelectedItem
+        {
+            get => _selected;
+            set
+            {
+                SetProperty(ref _selected, value);
+                OnHabitSelected(value);
+            }
+        }
+
+        private async void OnAddHabit(object obj)
+        {
+            //await Shell.Current.GoToAsync($"{nameof(SelectHabitPage)}?{nameof(SelectHabitViewModel.Time)}={_time.ToString(ViewDateFormat, Culture)}");
+
+        }
+
+        async void OnHabitSelected(Habit item)
+        {
+            if (item == null)
+                return;
+
+            //await Shell.Current.GoToAsync($"{nameof(HabitDetailCalenderPage)}?{nameof(HabitDetailCalenderViewModel.ID)}={item.Id}");
+        }
+
+    }
+}

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitTracker.Views.CalenderWeeklyPage"      Title="{Binding Title}"
+             xmlns:local="clr-namespace:HabitTracker.ViewModels"  
+             xmlns:model="clr-namespace:HabitTracker.Models" 
+             xmlns:conv="clr-namespace:HabitTracker.Converters">
+
+    <ContentPage.Resources>
+        <conv:IntToColorConverter x:Key="intColorConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddHabitCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <RefreshView Grid.Row="0" x:DataType="local:CalenderWeeklyViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Habits}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="20, 15, 20, 15" x:DataType="model:Habit">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0"
+                            Text="{Binding Name}" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                            <Label Grid.Column="1" 
+                            Text="{Binding Score}" 
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="17"
+                            FontAttributes="Bold"
+                            TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}"/>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalenderWeeklyViewModel}}, Path=HabitClickedCommand}"		
+                                CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid    Grid.Column="0" Background="{StaticResource StandardBackground}" Grid.ColumnSpan="5"/>
+            <Button  Grid.Column="0" Text="〈"     BackgroundColor="Transparent" Command="{Binding PreviousWeekCommand}" FontSize="Large"/>
+            <BoxView Grid.Column="1" Grid.Row="0"  BackgroundColor="Black" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+            <Button  Grid.Column="2" Text="Today"  BackgroundColor="Transparent" Command="{Binding TodayCommand}"/>
+            <BoxView Grid.Column="3" Grid.Row="0"  BackgroundColor="Black" WidthRequest="1" VerticalOptions="FillAndExpand" HorizontalOptions="End"/>
+            <Button  Grid.Column="4" Text="〉"     BackgroundColor="Transparent" Command="{Binding NextWeekCommand}" FontSize="Large"/>
+        </Grid>
+
+        <Grid.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Left"  Command="{Binding PreviousDayCommand}"/>
+            <SwipeGestureRecognizer Direction="Right" Command="{Binding NextDayCommand}"/>
+        </Grid.GestureRecognizers>
+    </Grid>
+</ContentPage>

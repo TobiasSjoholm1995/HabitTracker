@@ -10,7 +10,7 @@ using static HabitTracker.Constants;
 
 namespace HabitTracker.ViewModels
 {
-    class CalenderViewModel : BaseViewModel
+    class CalenderDailyViewModel : BaseViewModel
     {
         private Habit _selected;
         private DateTime _time;
@@ -19,12 +19,12 @@ namespace HabitTracker.ViewModels
         public Command LoadHabitsCommand { get; }
         public Command AddHabitCommand { get; }
         public Command<Habit> HabitClickedCommand { get; }
-        public Command LeftSwipeCommand { get; }
-        public Command RightSwipeCommand { get; }
+        public Command PreviousDayCommand { get; }
+        public Command NextDayCommand { get; }
+        public Command TodayCommand { get; }
 
 
-
-        public CalenderViewModel()
+        public CalenderDailyViewModel()
         {
             _time = DateTime.Today;
             Habits = new ObservableCollection<Habit>();
@@ -32,17 +32,24 @@ namespace HabitTracker.ViewModels
             LoadHabitsCommand   = new Command(LoadHabits);
             HabitClickedCommand = new Command<Habit>(OnHabitSelected);
             AddHabitCommand     = new Command(OnAddHabit);
-            LeftSwipeCommand    = new Command(OnLeftSwipe);
-            RightSwipeCommand   = new Command(OnRightSwipe);
+            PreviousDayCommand  = new Command(OnPreviousDay);
+            NextDayCommand      = new Command(OnNextDay);
+            TodayCommand        = new Command(OnGoToToday);
         }
 
-        private void OnLeftSwipe(object obj)
+        private void OnGoToToday(object obj)
+        {
+            _time = DateTime.Today;
+            LoadHabits();
+        }
+
+        private void OnPreviousDay(object obj)
         {
             _time = _time.AddDays(-1);
             LoadHabits();
         }
 
-        private void OnRightSwipe(object obj)
+        private void OnNextDay(object obj)
         {
             _time = _time.AddDays(1);
             LoadHabits();
@@ -68,7 +75,7 @@ namespace HabitTracker.ViewModels
                 return string.Empty;
 
             var scoreInteger = habits.Sum(h => h.Score);
-            var scoreString  = scoreInteger.ToString(CultureInfo.InvariantCulture);
+            var scoreString  = scoreInteger.ToString(Culture);
 
             if (scoreInteger > 0)
                 return "+" + scoreString;

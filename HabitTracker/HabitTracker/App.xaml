@@ -9,10 +9,12 @@
         <ResourceDictionary>
             <Color x:Key="Primary">#8529D1</Color>
             <LinearGradientBrush x:Key="StandardBackground" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#7a20c4" Offset="0.0" />
-                <GradientStop Color="#9e47e5" Offset="1.0" />
+                <GradientStop Color="#711bb7" Offset="0.0" />
+                <GradientStop Color="#9e47e5" Offset="0.45" />
+                <GradientStop Color="#9e47e5" Offset="0.55" />
+                <GradientStop Color="#711bb7" Offset="1.0" />
             </LinearGradientBrush>
-            
+
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
