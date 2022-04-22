@@ -19,6 +19,10 @@ namespace HabitTracker.ViewModels
         public Command LoadHabitsCommand { get; }
         public Command AddHabitCommand { get; }
         public Command<Habit> HabitClickedCommand { get; }
+        public Command LeftSwipeCommand { get; }
+        public Command RightSwipeCommand { get; }
+
+
 
         public CalenderViewModel()
         {
@@ -28,6 +32,20 @@ namespace HabitTracker.ViewModels
             LoadHabitsCommand   = new Command(LoadHabits);
             HabitClickedCommand = new Command<Habit>(OnHabitSelected);
             AddHabitCommand     = new Command(OnAddHabit);
+            LeftSwipeCommand    = new Command(OnLeftSwipe);
+            RightSwipeCommand   = new Command(OnRightSwipe);
+        }
+
+        private void OnLeftSwipe(object obj)
+        {
+            _time = _time.AddDays(-1);
+            LoadHabits();
+        }
+
+        private void OnRightSwipe(object obj)
+        {
+            _time = _time.AddDays(1);
+            LoadHabits();
         }
 
         private IEnumerable<Habit> GetHabits()
