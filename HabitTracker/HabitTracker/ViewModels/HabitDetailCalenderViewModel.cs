@@ -72,7 +72,7 @@ namespace HabitTracker.ViewModels
                 throw new Exception("Failed to Load habit");
 
             Name = _habit.Name;
-            Date = _habit.Date.ToString("yyyy-MM-dd");
+            Date = _habit.Date.ToString("yyyy-MM-dd HH:mm");
             Score = _habit.Score.ToString(CultureInfo.InvariantCulture);
         }
     }

@@ -1,5 +1,4 @@
 ﻿using HabitTracker.Models;
-using HabitTracker.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,25 +7,22 @@ using Xamarin.Forms;
 
 namespace HabitTracker.ViewModels
 {
-    class CalenderViewModel : BaseViewModel
+    class SelectHabitViewModel : BaseViewModel
     {
+
         private Habit _selected;
-        private DateTime _time;
 
         public ObservableCollection<Habit> Habits { get; }
         public Command LoadHabitsCommand { get; }
-        public Command AddHabitCommand { get; }
         public Command<Habit> HabitClickedCommand { get; }
 
-        public CalenderViewModel()
+        public SelectHabitViewModel()
         {
-            _time = DateTime.Today;
-            Title = "Calender";
+            Title = "Select Habit";
             Habits = new ObservableCollection<Habit>();
 
             LoadHabitsCommand   = new Command(LoadHabits);
             HabitClickedCommand = new Command<Habit>(OnHabitSelected);
-            AddHabitCommand     = new Command(OnAddHabit);
         }
 
         void LoadHabits()
@@ -36,9 +32,8 @@ namespace HabitTracker.ViewModels
             try
             {
                 Habits.Clear();
-                foreach (var habit in CompletedHabits.Get())
-                    if(habit.Date.Date == _time.Date)
-                        Habits.Add(habit);
+                foreach (var habit in AllHabits.Get())
+                    Habits.Add(habit);
             }
             finally
             {
@@ -62,17 +57,20 @@ namespace HabitTracker.ViewModels
             }
         }
 
-        private async void OnAddHabit(object obj)
-        {
-            await Shell.Current.GoToAsync($"{nameof(SelectHabitPage)}");
-        }
-
         async void OnHabitSelected(Habit item)
         {
             if (item == null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(HabitDetailCalenderPage)}?{nameof(HabitDetailCalenderViewModel.ID)}={item.Id}");
+            var habit = new Habit
+            {
+                Name = item.Name,
+                Score = item.Score,
+                Date = DateTime.Now
+            };
+            await CompletedHabits.Add(habit);
+            await GoToPreviousPage();
         }
     }
 }
+

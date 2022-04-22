@@ -14,6 +14,7 @@ namespace HabitTracker
             Routing.RegisterRoute(nameof(NewHabitPage), typeof(NewHabitPage));
             Routing.RegisterRoute(nameof(HabitDetailPage), typeof(HabitDetailPage));
             Routing.RegisterRoute(nameof(HabitDetailCalenderPage), typeof(HabitDetailCalenderPage));
+            Routing.RegisterRoute(nameof(SelectHabitPage), typeof(SelectHabitPage));
         }
 
         private void OnExitClicked(object sender, EventArgs e)
