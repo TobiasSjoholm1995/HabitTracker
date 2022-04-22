@@ -49,9 +49,6 @@
                                 NumberOfTapsRequired="1"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalenderViewModel}}, Path=HabitClickedCommand}"		
                                 CommandParameter="{Binding .}"/>
-                                <SwipeGestureRecognizer
-                                Direction="Left" 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:CalenderViewModel}}, Path=LeftSwipeCommand}"/>
                             </Grid.GestureRecognizers>
                         </Grid>
                     </DataTemplate>
