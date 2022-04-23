@@ -17,10 +17,25 @@ namespace HabitTracker.Services
         private List<Habit> _habits;
         private readonly string _filename;
 
-        public Habits(string filename)
+        public Habits(string filename, bool useDefault = false)
         {
             _filename = filename;
             _habits   = Database.Read(_filename);
+
+            if(_habits == null || _habits.Count == 0)
+                _habits = DefaultHabits();
+        }
+
+        private List<Habit> DefaultHabits()
+        {
+            var habits = new List<Habit>();
+
+            habits.Add(new Habit { Name = "Gym", Score = 1 });
+            habits.Add(new Habit { Name = "Unhealthy Food", Score = -1 });
+            habits.Add(new Habit { Name = "Running", Score = 1 });
+            habits.Add(new Habit { Name = "Overslept", Score = -1 });
+
+            return habits;
         }
 
         public async Task Add(Habit habit)

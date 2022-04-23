@@ -1,4 +1,7 @@
 ﻿
+using HabitTracker.Models;
+using System.Collections.Generic;
+
 namespace HabitTracker.Services
 {
     public interface IHabitFacade
@@ -14,9 +17,11 @@ namespace HabitTracker.Services
 
         public HabitsFacade()
         {
-            _all = new Habits("All" + Database.Extension);
+            _all = new Habits("All" + Database.Extension, true);
             _completed = new Habits("Completed" + Database.Extension);
         }
+
+
 
         public IHabits All()
         {
