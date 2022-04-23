@@ -18,7 +18,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" BackgroundColor="#9d45e5"  Padding="20,5,19,5">
+        <Grid Grid.Row="0" BackgroundColor="{StaticResource LightPrimary}"  Padding="20,5,19,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="6*" />
@@ -32,6 +32,12 @@
                    
                    VerticalOptions="Center"/>
 
+            <Label Grid.Column="2" Margin="1,1,0,0"
+                    Text="{Binding Score}" 
+                    FontSize="19"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+            
             <Label Grid.Column="2" 
                     Text="{Binding Score}" 
                     FontSize="19"
