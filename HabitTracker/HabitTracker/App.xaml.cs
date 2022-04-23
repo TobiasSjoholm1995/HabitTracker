@@ -13,7 +13,7 @@ namespace HabitTracker
         {
             InitializeComponent();
             DependencyService.Register<HabitsFacade>();
-            MainPage = new AppShell();              
+            MainPage = new AppShell();   
         }
 
         protected override void OnStart()

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Globalization;
+using Xamarin.Essentials;
 
 namespace HabitTracker
 {
-    static class Constants
+    static class Settings
     {
 
         public static readonly CultureInfo Culture = CultureInfo.InvariantCulture;
@@ -12,5 +13,11 @@ namespace HabitTracker
         public const StringComparison Comparer = StringComparison.InvariantCulture;
         public const int StartOfWeek = (int)DayOfWeek.Monday;
 
+
+        public static bool FirstRun
+        {
+            get => Preferences.Get(nameof(FirstRun), true);
+            set => Preferences.Set(nameof(FirstRun), value);
+        }
     }
 }

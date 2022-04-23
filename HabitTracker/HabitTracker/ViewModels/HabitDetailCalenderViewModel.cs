@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using static HabitTracker.Constants;
+using static HabitTracker.Settings;
 
 namespace HabitTracker.ViewModels
 {

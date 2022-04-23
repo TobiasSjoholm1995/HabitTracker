@@ -1,5 +1,5 @@
 ﻿using System;
-using static HabitTracker.Constants;
+using static HabitTracker.Settings;
 
 namespace HabitTracker.Models
 {

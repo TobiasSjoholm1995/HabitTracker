@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using System.Globalization;
 using HabitTracker.Models;
-using static HabitTracker.Constants;
+using static HabitTracker.Settings;
 
 namespace HabitTracker.ViewModels
 {
