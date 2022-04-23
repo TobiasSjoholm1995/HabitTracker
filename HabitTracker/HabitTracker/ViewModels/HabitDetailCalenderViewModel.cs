@@ -23,7 +23,7 @@ namespace HabitTracker.ViewModels
         public HabitDetailCalenderViewModel()
         {
             Title = "Completed Habit";
-            DeleteHabitCommand = new Command(async () => await OnDeleteHabit());
+            DeleteHabitCommand = MyCommand.Create(async () => await OnDeleteHabit());
         }
 
         private async Task OnDeleteHabit()

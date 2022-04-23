@@ -12,6 +12,11 @@ namespace HabitTracker.Models
             return new Command(SafeExecution(a));
         }
 
+        public static Command Create(Action a, Func<bool> canExecute)
+        {
+            return new Command(SafeExecution(a), canExecute);
+        }
+
         public static Command Create(Action<object> a)
         {
             return new Command(SafeExecution(a));

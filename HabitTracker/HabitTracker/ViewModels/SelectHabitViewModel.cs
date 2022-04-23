@@ -21,8 +21,8 @@ namespace HabitTracker.ViewModels
             Title = "Select Habit";
             Habits = new ObservableCollection<Habit>();
 
-            LoadHabitsCommand   = new Command(LoadHabits);
-            HabitClickedCommand = new Command<Habit>(OnHabitSelected);
+            LoadHabitsCommand   = MyCommand.Create(LoadHabits);
+            HabitClickedCommand = MyCommand<Habit>.Create(OnHabitSelected);
         }
 
         void LoadHabits()

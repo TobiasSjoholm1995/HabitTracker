@@ -42,11 +42,11 @@ namespace HabitTracker.ViewModels
             _time = DateTime.Today;
             Habits = new ObservableCollection<Habit>();
 
-            LoadHabitsCommand    = new Command(LoadHabits);
-            HabitClickedCommand  = new Command<Habit>(OnHabitSelected);
-            PreviousWeekCommand  = new Command(OnPreviousWeek);
-            NextWeekCommand      = new Command(OnNextWeek);
-            TodayCommand         = new Command(OnGoToToday);
+            LoadHabitsCommand    = MyCommand.Create(LoadHabits);
+            HabitClickedCommand  = MyCommand<Habit>.Create(OnHabitSelected);
+            PreviousWeekCommand  = MyCommand.Create(OnPreviousWeek);
+            NextWeekCommand      = MyCommand.Create(OnNextWeek);
+            TodayCommand         = MyCommand.Create(OnGoToToday);
         }
 
         private void OnGoToToday(object obj)

@@ -38,8 +38,8 @@ namespace HabitTracker.ViewModels
         {
             Score = "1";
             Error = string.Empty;
-            SaveCommand = new Command(OnSave, ValidateSave);
-            CancelCommand = new Command(OnCancel);
+            SaveCommand = MyCommand.Create(OnSave, ValidateSave);
+            CancelCommand = MyCommand.Create(OnCancel);
             PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }
 
