@@ -10,6 +10,7 @@ namespace HabitTracker.Services
         List<Habit> Get();
         Task Add(Habit habit);
         Task Remove(Habit habit);
+        Task RemoveAll();
     }
 
     public class Habits : IHabits
@@ -20,22 +21,7 @@ namespace HabitTracker.Services
         public Habits(string filename, bool useDefault = false)
         {
             _filename = filename;
-            _habits   = Database.Read(_filename);
-
-            if(_habits == null || _habits.Count == 0)
-                _habits = DefaultHabits();
-        }
-
-        private List<Habit> DefaultHabits()
-        {
-            var habits = new List<Habit>();
-
-            habits.Add(new Habit { Name = "Gym", Score = 1 });
-            habits.Add(new Habit { Name = "Unhealthy Food", Score = -1 });
-            habits.Add(new Habit { Name = "Running", Score = 1 });
-            habits.Add(new Habit { Name = "Overslept", Score = -1 });
-
-            return habits;
+            _habits   = Database.Read(_filename, useDefault);
         }
 
         public async Task Add(Habit habit)
@@ -54,6 +40,12 @@ namespace HabitTracker.Services
 
             if (removed)
                 await Database.Save(_filename, _habits);
+        }
+
+        public async Task RemoveAll()
+        {
+            _habits.Clear();
+            await Database.Save(_filename, _habits);
         }
 
         public List<Habit> Get()

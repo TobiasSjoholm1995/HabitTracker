@@ -33,7 +33,19 @@ namespace HabitTracker.Services
                 await sw.WriteAsync(builder.ToString());
         }
 
-        public static List<Habit> Read(string filename)
+        private static List<Habit> DefaultHabits()
+        {
+            var habits = new List<Habit>();
+
+            habits.Add(new Habit { Name = "Gym", Score = 1 });
+            habits.Add(new Habit { Name = "Unhealthy Food", Score = -1 });
+            habits.Add(new Habit { Name = "Running", Score = 1 });
+            habits.Add(new Habit { Name = "Overslept", Score = -1 });
+
+            return habits;
+        }
+
+        public static List<Habit> Read(string filename, bool useDefault = false)
         {
             var habits = new List<Habit>();
 
@@ -43,7 +55,12 @@ namespace HabitTracker.Services
             var path = GetFilepath(filename);
 
             if(!File.Exists(path))
+            {
+                if(useDefault)
+                    return DefaultHabits();
+                
                 return habits;
+            }
 
             var lines = File.ReadAllLines(path);
 

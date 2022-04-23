@@ -84,6 +84,10 @@
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderWeeklyPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="Analytics" Icon="icon_analytics.png">
+        <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:AnalyticsPage}" />
+    </FlyoutItem>
+
     <MenuItem Text="Exit" StyleClass="MenuItemLayoutStyle" Clicked="OnExitClicked"/>
 
 

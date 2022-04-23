@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitTracker.Views.AnalyticsPage"
+             Title="{Binding Title}">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete All" Command="{Binding DeleteCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Spacing="20" Padding="15">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Habit Count:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding HabitCount}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Completed Habits:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding CompletedCount}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Completed Good Habits:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding CompletedGoodHabits}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Completed Bad Habits:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding CompletedBadHabits}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Total Score:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding TotalScore}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
+
+    </StackLayout>
+
+
+
+</ContentPage>
