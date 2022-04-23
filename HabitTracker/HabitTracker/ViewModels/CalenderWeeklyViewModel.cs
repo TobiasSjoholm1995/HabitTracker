@@ -76,9 +76,15 @@ namespace HabitTracker.ViewModels
 
         private void SetTitle()
         {
-            Title    = _time.Year.ToString(Culture);
+            Title    = GetYear();
             SubTitle = "Week " + GetWeekNr(_time);
             Score    = GetScore();
+        }
+
+        private string GetYear()
+        {
+            var middleOfWeek = GetDay(_time, StartOfWeek + 3);
+            return middleOfWeek.Year.ToString(Culture);
         }
 
         private string GetScore()
