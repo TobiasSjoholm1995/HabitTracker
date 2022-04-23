@@ -19,8 +19,10 @@
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
                 <Label FontSize="Title" Text="Track Your Habits" />
-                <Label FontSize="Body" Text="This app helps you track your habits. Each habit has an associated score. Negative score indicates it's a bad habit and positive score indicates it's a good habit." />
-                <Label FontSize="Body" Text=" &quot;Good habits are the key to all success&quot; " FontAttributes="Italic" Padding="0, 10, 0, 10"/>
+                <Label FontSize="Body"  Text="This app helps you track your habits. Each habit has an associated score. Negative score indicates it's a bad habit and positive score indicates it's a good habit." />
+                <Label FontSize="Body"  Text=" &quot;Good habits are the key to all success&quot; " FontAttributes="Italic" Padding="0, 15, 0, 15"/>
+                <Label FontSize="Body"  Text="Intructions:" FontAttributes="Bold"/>
+                <Label FontSize="Body"  Text="Navigate to the 'Habits' page and create your habits. Then navigate to the 'Calender - Daily' page and add your completed habits." />
             </StackLayout>
         </ScrollView>
         
