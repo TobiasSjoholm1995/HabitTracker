@@ -8,6 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#8529D1</Color>
+            <Color x:Key="LightPrimary">#9e47e5</Color>
             <LinearGradientBrush x:Key="StandardBackground" StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#711bb7" Offset="0.0" />
                 <GradientStop Color="#9e47e5" Offset="0.45" />

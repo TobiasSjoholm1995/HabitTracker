@@ -14,6 +14,8 @@ namespace HabitTracker.ViewModels
     {
         private Habit _selected;
         private DateTime _time;
+        private string _score;
+        private string _subTitle;
 
         public ObservableCollection<Habit> Habits { get; }
         public Command LoadHabitsCommand { get; }
@@ -22,6 +24,18 @@ namespace HabitTracker.ViewModels
         public Command NextWeekCommand { get; }
         public Command TodayCommand { get; }
 
+
+        public string Score
+        {
+            get { return _score; }
+            set { SetProperty(ref _score, value); }
+        }
+
+        public string SubTitle
+        {
+            get { return _subTitle; }
+            set { SetProperty(ref _subTitle, value); }
+        }
 
         public CalenderWeeklyViewModel()
         {
@@ -62,16 +76,18 @@ namespace HabitTracker.ViewModels
 
         private void SetTitle()
         {
-            Title = "Week " + GetWeekNr(_time) + "   " + GetScore();
+            Title    = _time.Year.ToString(Culture);
+            SubTitle = "Week " + GetWeekNr(_time);
+            Score    = GetScore();
         }
 
         private string GetScore()
         {
             List<Habit> habits = new List<Habit>();
 
-            foreach (DayOfWeek e in Enum.GetValues(typeof(DayOfWeek)))
+            for (int i = StartOfWeek; i < StartOfWeek + 7; i++)
             {
-                var day  = GetDay(_time, (int)e);
+                var day  = GetDay(_time, i);
                 habits.AddRange(GetHabits(day));
             }
 

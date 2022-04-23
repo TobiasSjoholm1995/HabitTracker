@@ -16,6 +16,8 @@ namespace HabitTracker.ViewModels
     {
         private Habit _selected;
         private DateTime _time;
+        private string _score;
+        private string _subTitle;
 
         public ObservableCollection<Habit> Habits { get; }
         public Command LoadHabitsCommand { get; }
@@ -40,6 +42,20 @@ namespace HabitTracker.ViewModels
                 }
             }
         }
+
+
+        public string Score
+        {
+            get { return _score; }
+            set { SetProperty(ref _score, value); }
+        }
+
+        public string SubTitle
+        {
+            get { return _subTitle; }
+            set { SetProperty(ref _subTitle, value); }
+        }
+
 
         public CalenderDailyViewModel()
         {
@@ -81,7 +97,9 @@ namespace HabitTracker.ViewModels
 
         private void SetTitle()
         {
-            Title = _time.ToString("dddd") + "  " + GetScore();
+            Title    = _time.ToString("MMMM") + " " + _time.Day.ToString(Culture);
+            SubTitle = _time.ToString("dddd");
+            Score    = GetScore();
         }
 
         private string GetScore()
