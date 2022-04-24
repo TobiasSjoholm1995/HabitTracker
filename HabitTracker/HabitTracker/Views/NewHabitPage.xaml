@@ -13,7 +13,7 @@
             <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" MaxLength="32" />
 
             <Label Text="Score" FontSize="Medium" FontAttributes="Bold"  />
-            <Editor Text="{Binding Score, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" MaxLength="6" />
+            <Entry Text="{Binding Score, Mode=TwoWay}" FontSize="Medium" Margin="0" MaxLength="5" />
             
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
