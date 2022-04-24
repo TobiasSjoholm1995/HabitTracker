@@ -1,4 +1,5 @@
 ﻿using HabitTracker.Models;
+using HabitTracker.Views;
 using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -15,6 +16,7 @@ namespace HabitTracker.ViewModels
         public ObservableCollection<Habit> Habits { get; }
         public Command LoadHabitsCommand { get; }
         public Command<Habit> HabitClickedCommand { get; }
+        public Command AddHabitCommand { get; }
 
         public SelectHabitViewModel()
         {
@@ -23,6 +25,7 @@ namespace HabitTracker.ViewModels
 
             LoadHabitsCommand   = MyCommand.Create(LoadHabits);
             HabitClickedCommand = MyCommand<Habit>.Create(OnHabitSelected);
+            AddHabitCommand = MyCommand.Create(OnAddHabit);
         }
 
         void LoadHabits()
@@ -69,13 +72,18 @@ namespace HabitTracker.ViewModels
 
             var habit = new Habit
             {
-                Name = item.Name,
+                Name  = item.Name,
                 Score = item.Score,
-                Date = DateTime.ParseExact(Time, ViewDateFormat, Culture)
+                Date  = DateTime.ParseExact(Time, ViewDateFormat, Culture)
             };
 
             await CompletedHabits.Add(habit);
             await GoToPreviousPage();
+        }
+
+        private async void OnAddHabit(object obj)
+        {
+            await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}?{nameof(NewHabitViewModel.AddToCompleted)}={true}");
         }
     }
 }

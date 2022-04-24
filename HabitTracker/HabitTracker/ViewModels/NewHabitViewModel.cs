@@ -6,13 +6,17 @@ using static HabitTracker.Settings;
 
 namespace HabitTracker.ViewModels
 {
+
+    [QueryProperty(nameof(AddToCompleted), nameof(AddToCompleted))]
     public class NewHabitViewModel : BaseViewModel
     {
         private string _name;
         private string _score;
 
+
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
+        public bool AddToCompleted { get; set; }
 
         public string Name
         {
@@ -79,6 +83,19 @@ namespace HabitTracker.ViewModels
             };
 
             await AllHabits.Add(habit);
+
+            if(AddToCompleted)
+            {
+                var completedHabit = new Habit
+                {
+                    Name  = habit.Name,
+                    Score = habit.Score,
+                    Date  = DateTime.Now 
+                };
+
+                await CompletedHabits.Add(completedHabit);
+                await GoToPreviousPage();
+            }
 
             await GoToPreviousPage();
         }

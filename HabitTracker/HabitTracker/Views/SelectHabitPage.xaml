@@ -7,6 +7,11 @@
              x:Class="HabitTracker.Views.SelectHabitPage"
              Title="{Binding Title}">
 
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Command="{Binding AddHabitCommand}" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Resources>
         <conv:IntToColorConverter x:Key="intColorConverter" />
     </ContentPage.Resources>
