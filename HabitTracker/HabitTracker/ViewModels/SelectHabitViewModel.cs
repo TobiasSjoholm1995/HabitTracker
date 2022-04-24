@@ -83,7 +83,7 @@ namespace HabitTracker.ViewModels
 
         private async void OnAddHabit(object obj)
         {
-            await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}?{nameof(NewHabitViewModel.AddToCompleted)}={true}");
+            await Shell.Current.GoToAsync($"{nameof(NewHabitPage)}?{nameof(NewHabitViewModel.Time)}={Time}");
         }
     }
 }

@@ -7,7 +7,7 @@ using static HabitTracker.Settings;
 namespace HabitTracker.ViewModels
 {
 
-    [QueryProperty(nameof(AddToCompleted), nameof(AddToCompleted))]
+    [QueryProperty(nameof(Time), nameof(Time))]
     public class NewHabitViewModel : BaseViewModel
     {
         private string _name;
@@ -16,7 +16,12 @@ namespace HabitTracker.ViewModels
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
-        public bool AddToCompleted { get; set; }
+        public string Time { get; set; }
+
+        public bool AddToCompleted
+        {
+            get => !string.IsNullOrEmpty(Time);
+        }
 
         public string Name
         {
@@ -90,7 +95,7 @@ namespace HabitTracker.ViewModels
                 {
                     Name  = habit.Name,
                     Score = habit.Score,
-                    Date  = DateTime.Now 
+                    Date  = DateTime.ParseExact(Time, ViewDateFormat, Culture)
                 };
 
                 await CompletedHabits.Add(completedHabit);
