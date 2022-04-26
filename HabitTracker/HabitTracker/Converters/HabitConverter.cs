@@ -29,7 +29,7 @@ namespace HabitTracker.Converters
             var error = new Exception("The database is invalid.");
 
             // >= is for forward compatiblility incase extensions happens in the future
-            if (columns.Length >= 5)
+            if (columns.Length >= 4)
             {
                 return new Habit
                 {
