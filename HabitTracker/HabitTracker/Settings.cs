@@ -15,10 +15,10 @@ namespace HabitTracker
         public const int StartOfWeek = (int)DayOfWeek.Monday;
 
 
-        public static bool FirstRun
+        public static bool IsFirstRun
         {
-            get => Preferences.Get(nameof(FirstRun), true);
-            set => Preferences.Set(nameof(FirstRun), value);
+            get => Preferences.Get(nameof(IsFirstRun), true);
+            set => Preferences.Set(nameof(IsFirstRun), value);
         }
     }
 }

@@ -26,10 +26,10 @@ namespace HabitTracker
 
         private void GoToStartPage()
         {
-            if (Settings.FirstRun)
+            if (Settings.IsFirstRun)
             {
                 CurrentItem = Info;
-                Settings.FirstRun = false;
+                Settings.IsFirstRun = false;
             }
             else
             {
