@@ -9,7 +9,6 @@ namespace HabitTracker
 
         public static readonly CultureInfo Culture = CultureInfo.InvariantCulture;
         public const string ViewDateFormat = "yyyy-MM-dd";
-
         public const char Separator = '#';
         public const StringComparison Comparer = StringComparison.InvariantCulture;
         public const int StartOfWeek = (int)DayOfWeek.Monday;
