@@ -10,8 +10,6 @@ namespace HabitTracker.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int Score { get; set; }
-        public bool Favorite { get; set; }
-
 
         public Habit()
         {

@@ -37,8 +37,7 @@ namespace HabitTracker.Converters
                     Name = columns[0],
                     Id = columns[1],
                     Date = DateTime.ParseExact(columns[2], ExactDateFormat, Culture),
-                    Favorite = bool.Parse(columns[3]),
-                    Score = int.Parse(columns[4], NumberStyles.Any, Culture)
+                    Score = int.Parse(columns[3], NumberStyles.Any, Culture)
                 };
             }
 
