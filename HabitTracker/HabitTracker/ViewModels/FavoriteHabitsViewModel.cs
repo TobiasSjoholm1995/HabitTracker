@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace HabitTracker.ViewModels
 {
-    public class HabitsViewModel : BaseViewModel
+    public class FavoriteHabitsViewModel : BaseViewModel
     {
         private Habit _selected;
 
@@ -17,9 +17,9 @@ namespace HabitTracker.ViewModels
         public Command AddHabitCommand { get; }
         public Command<Habit> HabitClickedCommand { get; }
 
-        public HabitsViewModel()
+        public FavoriteHabitsViewModel()
         {
-            Title = "Habits";
+            Title = "Favorite Habits";
             Habits = new ObservableCollection<Habit>();
 
             LoadHabitsCommand   = MyCommand.Create(LoadHabits);

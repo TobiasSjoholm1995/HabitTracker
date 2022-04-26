@@ -9,7 +9,7 @@ using static HabitTracker.Settings;
 namespace HabitTracker.ViewModels
 {
     [QueryProperty(nameof(ID), nameof(ID))]
-    class HabitDetailCalenderViewModel : BaseViewModel
+    class CompletedHabitDetailViewModel : BaseViewModel
     {
         private string _id;
         private string _name;
@@ -20,7 +20,7 @@ namespace HabitTracker.ViewModels
         public Command DeleteHabitCommand { get; }
 
 
-        public HabitDetailCalenderViewModel()
+        public CompletedHabitDetailViewModel()
         {
             Title = "Completed Habit";
             DeleteHabitCommand = MyCommand.Create(async () => await OnDeleteHabit());

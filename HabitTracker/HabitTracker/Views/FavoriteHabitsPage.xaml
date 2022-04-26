@@ -17,7 +17,7 @@
     </ContentPage.ToolbarItems>
 
     
-    <RefreshView x:DataType="local:HabitsViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView x:DataType="local:FavoriteHabitsViewModel" Command="{Binding LoadHabitsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding Habits}"
                 SelectionMode="Single">
@@ -43,7 +43,7 @@
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:HabitsViewModel}}, Path=HabitClickedCommand}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:FavoriteHabitsViewModel}}, Path=HabitClickedCommand}"		
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </Grid.GestureRecognizers>

@@ -80,7 +80,7 @@
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderWeeklyPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Habits" Icon="icon_feed.png">
+    <FlyoutItem Title="Favorite Habits" Icon="icon_feed.png">
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:FavoriteHabitsPage}" />
     </FlyoutItem>
 
