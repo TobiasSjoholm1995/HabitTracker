@@ -118,7 +118,7 @@ namespace HabitTracker.ViewModels
 
             if(AddToCompleted)
             {
-                if(AutomaticAddToFavoriteHabits)
+                if(AutoAddHabitToFavorites)
                     await FavoriteHabits.Add(habit);
 
                 var completedHabit = new Habit
