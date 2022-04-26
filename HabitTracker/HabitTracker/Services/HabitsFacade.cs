@@ -12,12 +12,12 @@ namespace HabitTracker.Services
 
     public class HabitsFacade : IHabitFacade
     {
-        private Habits _all;
+        private Habits _favorites;
         private Habits _completed;
 
         public HabitsFacade()
         {
-            _all = new Habits("All" + Database.Extension, true);
+            _favorites = new Habits("Favorites" + Database.Extension, true);
             _completed = new Habits("Completed" + Database.Extension);
         }
 
@@ -25,7 +25,7 @@ namespace HabitTracker.Services
 
         public IHabits All()
         {
-            return _all;
+            return _favorites;
         }
 
         public IHabits Completed()
