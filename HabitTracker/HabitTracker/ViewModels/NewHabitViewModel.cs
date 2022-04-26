@@ -115,10 +115,12 @@ namespace HabitTracker.ViewModels
                 Score = int.Parse(Score, NumberStyles.Any, CultureInfo.InvariantCulture)
             };
 
-            await AllHabits.Add(habit);
 
             if(AddToCompleted)
             {
+                if(AutomaticAddToFavoriteHabits)
+                    await FavoriteHabits.Add(habit);
+
                 var completedHabit = new Habit
                 {
                     Name  = habit.Name,
@@ -128,6 +130,10 @@ namespace HabitTracker.ViewModels
 
                 await CompletedHabits.Add(completedHabit);
                 await GoToPreviousPage();
+            }
+            else
+            {
+                await FavoriteHabits.Add(habit);
             }
 
             await GoToPreviousPage();

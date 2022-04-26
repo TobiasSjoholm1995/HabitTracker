@@ -29,7 +29,7 @@ namespace HabitTracker.ViewModels
 
         private async Task OnDeleteHabit()
         {
-            await AllHabits.Remove(_habit);
+            await FavoriteHabits.Remove(_habit);
             await GoToPreviousPage();
         }
 
@@ -64,7 +64,7 @@ namespace HabitTracker.ViewModels
         {
             try
             {
-                _habit = AllHabits.Get().Where(h => string.Equals(h.Id, id, StringComparison.InvariantCulture)).FirstOrDefault();
+                _habit = FavoriteHabits.Get().Where(h => string.Equals(h.Id, id, StringComparison.InvariantCulture)).FirstOrDefault();
 
                 if(_habit == null)
                     throw new Exception("Failed to Load habit");

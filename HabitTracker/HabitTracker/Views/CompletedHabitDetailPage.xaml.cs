@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace HabitTracker.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HabitDetailCalenderPage : ContentPage
+    public partial class CompletedHabitDetailPage : ContentPage
     {
-        public HabitDetailCalenderPage()
+        public CompletedHabitDetailPage()
         {
             InitializeComponent();
         }

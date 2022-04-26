@@ -3,11 +3,11 @@ using Xamarin.Forms;
 
 namespace HabitTracker.Views
 {
-    public partial class HabitsPage : ContentPage
+    public partial class FavoriteHabitsPage : ContentPage
     {
         HabitsViewModel _viewModel;
 
-        public HabitsPage()
+        public FavoriteHabitsPage()
         {
             InitializeComponent();
 

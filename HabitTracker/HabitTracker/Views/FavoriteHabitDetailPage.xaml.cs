@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace HabitTracker.Views
 {
-    public partial class HabitDetailPage : ContentPage
+    public partial class FavoriteHabitDetailPage : ContentPage
     {
-        public HabitDetailPage()
+        public FavoriteHabitDetailPage()
         {
             InitializeComponent();
         }

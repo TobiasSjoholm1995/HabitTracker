@@ -8,7 +8,7 @@ namespace HabitTracker.ViewModels
 {
     public class BaseViewModel : NotifyPropertyChanged
     {
-        protected readonly IHabits AllHabits;
+        protected readonly IHabits FavoriteHabits;
         protected readonly IHabits CompletedHabits;
 
         public BaseViewModel()
@@ -18,7 +18,7 @@ namespace HabitTracker.ViewModels
             if (facade == null)
                 throw new Exception("Unable to load data");
 
-            AllHabits = facade.All();
+            FavoriteHabits  = facade.All();
             CompletedHabits = facade.Completed();
         }
 

@@ -63,7 +63,7 @@ namespace HabitTracker.ViewModels
 
         private void OnRefresh()
         {
-            HabitCount = AllHabits.Get().Count;
+            HabitCount = FavoriteHabits.Get().Count;
             CompletedCount = CompletedHabits.Get().Count;
             CompletedGoodHabits = CompletedHabits.Get().Where(h => h.Score > 0).Count();
             CompletedBadHabits = CompletedHabits.Get().Where(h => h.Score < 0).Count();
@@ -84,7 +84,7 @@ namespace HabitTracker.ViewModels
             if(!answer)
                 return;
 
-            await AllHabits.RemoveAll();
+            await FavoriteHabits.RemoveAll();
             await CompletedHabits.RemoveAll();
 
             OnRefresh();

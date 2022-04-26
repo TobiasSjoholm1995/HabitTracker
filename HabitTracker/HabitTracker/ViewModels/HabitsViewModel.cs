@@ -34,7 +34,7 @@ namespace HabitTracker.ViewModels
             try
             {
                 Habits.Clear();
-                foreach (var habit in AllHabits.Get().OrderBy(h => h.Name))
+                foreach (var habit in FavoriteHabits.Get().OrderBy(h => h.Name))
                     Habits.Add(habit);
             }
             finally
@@ -70,7 +70,7 @@ namespace HabitTracker.ViewModels
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(HabitDetailPage)}?{nameof(HabitDetailViewModel.ID)}={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(FavoriteHabitDetailPage)}?{nameof(HabitDetailViewModel.ID)}={item.Id}");
         }
     }
 }

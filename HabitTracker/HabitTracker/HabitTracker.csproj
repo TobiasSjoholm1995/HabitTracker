@@ -11,8 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\HabitsPage.xaml.cs">
-      <DependentUpon>HabitsPage.xaml</DependentUpon>
+    <Compile Update="Views\CompletedHabitDetailPage.xaml.cs">
+      <DependentUpon>CompletedHabitDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\FavoriteHabitsPage.xaml.cs">
+      <DependentUpon>FavoriteHabitsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
@@ -20,8 +23,8 @@
     <Compile Update="Views\CalenderDailyPage.xaml.cs">
       <DependentUpon>CalenderDailyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\HabitDetailPage.xaml.cs">
-      <DependentUpon>HabitDetailPage.xaml</DependentUpon>
+    <Compile Update="Views\FavoriteHabitDetailPage.xaml.cs">
+      <DependentUpon>FavoriteHabitDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\NewHabitPage.xaml.cs">
       <DependentUpon>NewHabitPage.xaml</DependentUpon>
@@ -35,7 +38,7 @@
     <EmbeddedResource Update="Views\CalenderWeeklyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\HabitDetailCalenderPage.xaml">
+    <EmbeddedResource Update="Views\CompletedHabitDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SelectHabitPage.xaml">

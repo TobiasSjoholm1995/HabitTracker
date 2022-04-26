@@ -36,7 +36,7 @@ namespace HabitTracker.ViewModels
             try
             {
                 Habits.Clear();
-                foreach (var habit in AllHabits.Get().OrderBy(h => h.Name))
+                foreach (var habit in FavoriteHabits.Get().OrderBy(h => h.Name))
                     Habits.Add(habit);
             }
             finally

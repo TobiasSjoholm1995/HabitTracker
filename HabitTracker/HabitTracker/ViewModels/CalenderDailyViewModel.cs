@@ -163,7 +163,7 @@ namespace HabitTracker.ViewModels
             if (item == null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(HabitDetailCalenderPage)}?{nameof(HabitDetailCalenderViewModel.ID)}={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(CompletedHabitDetailPage)}?{nameof(HabitDetailCalenderViewModel.ID)}={item.Id}");
         }
     }
 }
