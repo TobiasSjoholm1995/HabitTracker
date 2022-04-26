@@ -2,6 +2,7 @@
 using HabitTracker.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 using static HabitTracker.Settings;
 
@@ -35,7 +36,7 @@ namespace HabitTracker.ViewModels
             try
             {
                 Habits.Clear();
-                foreach (var habit in AllHabits.Get())
+                foreach (var habit in AllHabits.Get().OrderBy(h => h.Name))
                     Habits.Add(habit);
             }
             finally
