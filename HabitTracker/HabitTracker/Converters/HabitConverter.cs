@@ -17,7 +17,6 @@ namespace HabitTracker.Converters
             return habit.Name + Separator
                  + habit.Id   + Separator 
                  + habit.Date.ToString(ExactDateFormat, Culture) + Separator
-                 + habit.Favorite.ToString(Culture) + Separator
                  + habit.Score.ToString(Culture) + Environment.NewLine;
         }
 

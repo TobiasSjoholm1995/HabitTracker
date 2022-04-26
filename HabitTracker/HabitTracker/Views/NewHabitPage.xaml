@@ -26,9 +26,6 @@
             <StackLayout Padding="0" Orientation="Vertical" IsVisible="{Binding IsDateEnabled, Mode=TwoWay}">
                 <Label Text="Date" FontSize="Medium" FontAttributes="Bold" Padding="0,15,0,0" />
                 <DatePicker Date="{Binding Date, Mode=TwoWay}" Format="yyyy-MM-dd" />
-
-                <Label Text="Time" FontSize="Medium" FontAttributes="Bold" Padding="0,15,0,0" />
-                <TimePicker Time="{Binding Time, Mode=TwoWay}" Format="HH:mm"  />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Padding="0,25,0,5">

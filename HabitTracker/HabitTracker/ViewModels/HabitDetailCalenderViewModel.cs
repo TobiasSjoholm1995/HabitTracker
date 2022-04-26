@@ -14,7 +14,6 @@ namespace HabitTracker.ViewModels
         private string _id;
         private string _name;
         private string _date;
-        private string _time;
         private string _score;
         private Habit _habit;
 
@@ -47,12 +46,6 @@ namespace HabitTracker.ViewModels
             set => SetProperty(ref _date, value);
         }
 
-        public string Time
-        {
-            get => _time;
-            set => SetProperty(ref _time, value);
-        }
-
         public string Score
         {
             get => _score;
@@ -81,7 +74,6 @@ namespace HabitTracker.ViewModels
 
             Name  = _habit.Name;
             Date  = _habit.Date.ToString(ViewDateOnlyFormat, Culture);
-            Time  = _habit.Date.ToString(ViewTimeOnlyFormat, Culture);
             Score = _habit.Score.ToString(Culture);
         }
     }

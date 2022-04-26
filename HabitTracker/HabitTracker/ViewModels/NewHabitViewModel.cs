@@ -33,19 +33,9 @@ namespace HabitTracker.ViewModels
             {
                 _dateAndTime = value;
                 Date = DateTime.ParseExact(value, ViewDateFormat, Culture).Date;
-                Time = DateTime.ParseExact(value, ViewDateFormat, Culture).TimeOfDay;
                 IsDateEnabled = !string.IsNullOrEmpty(value);
             }
         }
-
-        private TimeSpan _time;
-
-        public TimeSpan Time
-        {
-            get { return _time; }
-            set { SetProperty(ref _time, value); }
-        }
-
 
         private DateTime _date;
 
@@ -133,7 +123,7 @@ namespace HabitTracker.ViewModels
                 {
                     Name  = habit.Name,
                     Score = habit.Score,
-                    Date  = Date.Date.Add(Time)
+                    Date  = Date
                 };
 
                 await CompletedHabits.Add(completedHabit);
