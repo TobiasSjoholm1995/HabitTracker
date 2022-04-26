@@ -39,7 +39,7 @@ namespace HabitTracker.ViewModels
 
         public CalenderWeeklyViewModel()
         {
-            _time = DateTime.Today;
+            _time = DateTime.Now;
             Habits = new ObservableCollection<Habit>();
 
             LoadHabitsCommand    = MyCommand.Create(LoadHabits);
@@ -51,7 +51,7 @@ namespace HabitTracker.ViewModels
 
         private void OnGoToToday(object obj)
         {
-            _time = DateTime.Today;
+            _time = DateTime.Now;
             LoadHabits();
         }
 

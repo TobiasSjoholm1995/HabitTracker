@@ -59,7 +59,7 @@ namespace HabitTracker.ViewModels
 
         public CalenderDailyViewModel()
         {
-            _time = DateTime.Today;
+            _time = DateTime.Now;
             Habits = new ObservableCollection<Habit>();
 
             LoadHabitsCommand   = MyCommand.Create(LoadHabits);
@@ -72,7 +72,7 @@ namespace HabitTracker.ViewModels
 
         private void OnGoToToday(object obj)
         {
-            _time = DateTime.Today;
+            _time = DateTime.Now;
             LoadHabits();
         }
 
@@ -90,7 +90,7 @@ namespace HabitTracker.ViewModels
 
         private IEnumerable<Habit> GetHabits()
         {
-            foreach (var habit in CompletedHabits.Get())
+            foreach (var habit in CompletedHabits.Get().OrderBy(h => h.Date))
                 if (habit.Date.Date == _time.Date)
                     yield return habit;
         }

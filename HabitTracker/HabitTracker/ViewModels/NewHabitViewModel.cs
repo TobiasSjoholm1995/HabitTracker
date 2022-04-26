@@ -7,7 +7,7 @@ using static HabitTracker.Settings;
 namespace HabitTracker.ViewModels
 {
 
-    [QueryProperty(nameof(Time), nameof(Time))]
+    [QueryProperty(nameof(DateAndTime), nameof(DateAndTime))]
     public class NewHabitViewModel : BaseViewModel
     {
         private string _name;
@@ -16,11 +16,49 @@ namespace HabitTracker.ViewModels
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
-        public string Time { get; set; }
+
+        private bool _isDateEnabled;
+        public bool IsDateEnabled { 
+            get { return _isDateEnabled; }
+            set { SetProperty(ref _isDateEnabled, value); }
+        }
+
+
+        private string _dateAndTime;
+        public string DateAndTime { 
+            get {
+                return _dateAndTime;
+            }
+            set
+            {
+                _dateAndTime = value;
+                Date = DateTime.ParseExact(value, ViewDateFormat, Culture).Date;
+                Time = DateTime.ParseExact(value, ViewDateFormat, Culture).TimeOfDay;
+                IsDateEnabled = !string.IsNullOrEmpty(value);
+            }
+        }
+
+        private TimeSpan _time;
+
+        public TimeSpan Time
+        {
+            get { return _time; }
+            set { SetProperty(ref _time, value); }
+        }
+
+
+        private DateTime _date;
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set { SetProperty(ref _date, value); }
+        }
+
 
         public bool AddToCompleted
         {
-            get => !string.IsNullOrEmpty(Time);
+            get => !string.IsNullOrEmpty(DateAndTime);
         }
 
         public string Name
@@ -95,7 +133,7 @@ namespace HabitTracker.ViewModels
                 {
                     Name  = habit.Name,
                     Score = habit.Score,
-                    Date  = DateTime.ParseExact(Time, ViewDateFormat, Culture)
+                    Date  = Date.Date.Add(Time)
                 };
 
                 await CompletedHabits.Add(completedHabit);

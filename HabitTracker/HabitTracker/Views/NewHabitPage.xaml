@@ -12,21 +12,30 @@
             <Label Text="Name" FontSize="Medium" FontAttributes="Bold" />
             <Entry Text="{Binding Name, Mode=TwoWay}" FontSize="Medium" MaxLength="32" />
 
-            <Label Text="Score" FontSize="Medium" FontAttributes="Bold" Padding="0,10,0,0" />
+            <Label Text="Score" FontSize="Medium" FontAttributes="Bold" Padding="0,15,0,0" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Entry Grid.Column="0" IsReadOnly="True" Text="{Binding Score}" FontSize="Medium" />
                 <Stepper Grid.Column="1" Maximum="999" Minimum="-999" Increment="1" Value="{Binding Score}"/>
             </Grid>
+
+            <StackLayout Padding="0" Orientation="Vertical" IsVisible="{Binding IsDateEnabled, Mode=TwoWay}">
+                <Label Text="Date" FontSize="Medium" FontAttributes="Bold" Padding="0,15,0,0" />
+                <DatePicker Date="{Binding Date, Mode=TwoWay}" Format="yyyy-MM-dd" />
+
+                <Label Text="Time" FontSize="Medium" FontAttributes="Bold" Padding="0,15,0,0" />
+                <TimePicker Time="{Binding Time, Mode=TwoWay}" Format="HH:mm"  />
+            </StackLayout>
 
             <StackLayout Orientation="Horizontal" Padding="0,25,0,5">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Save"   Command="{Binding SaveCommand}"   HorizontalOptions="FillAndExpand"/>
             </StackLayout>
+
 
             <Label Text="{Binding Error}" FontSize="Medium" TextColor="Red" />
 

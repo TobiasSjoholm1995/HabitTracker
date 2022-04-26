@@ -40,6 +40,14 @@
             <Label Grid.Column="0" Text="Date:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
             <Label Grid.Column="1" Text="{Binding Date}" FontSize="Medium" LineBreakMode="WordWrap"/>
         </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Time:" FontSize="Medium" Padding="0,0,20,0" FontAttributes="Bold" LineBreakMode="NoWrap" />
+            <Label Grid.Column="1" Text="{Binding Time}" FontSize="Medium" LineBreakMode="WordWrap"/>
+        </Grid>
     </StackLayout>
 
 </ContentPage>
