@@ -88,7 +88,7 @@
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:InfoPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings" Icon="icon_about.png">
+    <FlyoutItem Title="Settings" Icon="icon_settings.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:SettingsPage}" />
     </FlyoutItem>
 
