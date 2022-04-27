@@ -4,11 +4,6 @@
              x:Class="HabitTracker.Views.AnalyticsPage"
              Title="{Binding Title}">
 
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete All" Command="{Binding DeleteCommand}" />
-    </ContentPage.ToolbarItems>
-
     <StackLayout Spacing="20" Padding="15">
 
         <Grid>

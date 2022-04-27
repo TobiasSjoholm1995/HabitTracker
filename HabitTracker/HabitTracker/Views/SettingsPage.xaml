@@ -42,6 +42,29 @@
                 <Picker Grid.Column="1" ItemsSource="{ Binding ViewDateOnlyFormats }" SelectedIndex="{Binding ViewDateOnlyFormat}" WidthRequest="125" TextColor="{StaticResource Primary}"  HorizontalTextAlignment="Center" VerticalOptions="Center" />
             </Grid>
 
+            <Grid Padding="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Column="0" Text="Favorite Habits" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
+                <Button Grid.Column="1" WidthRequest="125" Text="Delete" Command="{Binding DeleteFavoritesCommand}"/>
+            </Grid>
+
+            <Grid Padding="0,10,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Column="0" Text="Completed Habits" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
+                <Button Grid.Row="0" Grid.Column="1" WidthRequest="125" Text="Delete" Command="{Binding DeleteCompletedCommand}" VerticalOptions="Center"/>
+            </Grid>
+
         </StackLayout>
     </ScrollView>
 

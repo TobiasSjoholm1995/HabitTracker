@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -11,6 +12,9 @@ namespace HabitTracker.ViewModels
     {
 
         public Command ResetCommand { get; }
+
+        public Command DeleteFavoritesCommand { get; }
+        public Command DeleteCompletedCommand { get; }
 
 
         public bool AutoAddHabitToFavorites
@@ -56,7 +60,10 @@ namespace HabitTracker.ViewModels
         public SettingsViewModel()
         {
             Title = "Settings";
-            ResetCommand = MyCommand.Create(OnReset);
+            ResetCommand  = MyCommand.Create(OnReset);
+            DeleteFavoritesCommand = MyCommand.Create(async () => await OnDeleteFavorites());
+            DeleteCompletedCommand = MyCommand.Create(async () => await OnDeleteCompleted());
+
             StartOfWeek = Settings.StartOfWeek;
         }
 
@@ -67,6 +74,27 @@ namespace HabitTracker.ViewModels
             StartOfWeek = Settings.StartOfWeek_Default;
             ViewDateOnlyFormat = ViewDateOnlyFormats.ToList().IndexOf(Settings.ViewDateFormat_Default);
             AutoAddHabitToFavorites = Settings.IsAutoAddToFavoritesEnabled_Default;
+        }
+
+
+        private async Task OnDeleteFavorites()
+        {
+            bool answer = await App.Current.MainPage.DisplayAlert("Warning", "Do you wish to delete your favorite habits?", "Yes", "No");
+
+            if (!answer)
+                return;
+
+            await FavoriteHabits.RemoveAll();
+        }
+
+        private async Task OnDeleteCompleted()
+        {
+            bool answer = await App.Current.MainPage.DisplayAlert("Warning", "Do you wish to delete your completed habits?", "Yes", "No");
+
+            if (!answer)
+                return;
+
+            await CompletedHabits.RemoveAll();
         }
 
 

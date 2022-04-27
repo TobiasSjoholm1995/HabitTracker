@@ -8,7 +8,6 @@ namespace HabitTracker.ViewModels
 {
     class AnalyticsViewModel : BaseViewModel
     {
-        public Command DeleteCommand { get; }
         public Command RefreshCommand { get; }
 
 
@@ -56,7 +55,6 @@ namespace HabitTracker.ViewModels
 
         public AnalyticsViewModel()
         {
-            DeleteCommand  = MyCommand.Create(async () => await OnDelete());
             RefreshCommand = MyCommand.Create(OnRefresh);
             Title          = "Analytics";
         }
@@ -75,19 +73,6 @@ namespace HabitTracker.ViewModels
                 TotalScore = "+" + scoreString;
             else
                 TotalScore = scoreString;
-        }
-
-        private async Task OnDelete()
-        {
-            bool answer = await App.Current.MainPage.DisplayAlert("Warning", "Do you wish to delete all data?", "Yes", "No");
-
-            if(!answer)
-                return;
-
-            await FavoriteHabits.RemoveAll();
-            await CompletedHabits.RemoveAll();
-
-            OnRefresh();
         }
     }
 }
