@@ -5,8 +5,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:HabitTracker.ViewModels"  
              xmlns:model="clr-namespace:HabitTracker.Models" 
-             xmlns:conv="clr-namespace:HabitTracker.Converters"
-             x:Name="BrowseHabitPage">
+             xmlns:conv="clr-namespace:HabitTracker.Converters">
 
     <ContentPage.Resources>
         <conv:IntToColorConverter x:Key="intColorConverter" />

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitTracker.Views.SettingsPage"
+             Title="{ Binding Title }">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Reset" Command="{Binding ResetCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+
+        <StackLayout Orientation="Vertical" Padding="20, 25, 10, 10">
+            
+            <Grid Padding="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Column="0" Text="Auto Add Habit to Favorites" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
+                <Switch Grid.Column="1" IsToggled="{Binding AutoAddHabitToFavorites}" VerticalOptions="Center" ThumbColor="{StaticResource Primary}"/>
+            </Grid>
+
+            <Grid Padding="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Column="0" Text="First Day of Week" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
+                <Picker Grid.Column="1" ItemsSource="{ Binding NameOfDays }" SelectedIndex="{Binding StartOfWeek}" WidthRequest="125" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+            </Grid>
+
+            <Grid Padding="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Column="0" Text="Date Format" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
+                <Picker Grid.Column="1" ItemsSource="{ Binding ViewDateOnlyFormats }" SelectedIndex="{Binding ViewDateOnlyFormat}" WidthRequest="125" TextColor="{StaticResource Primary}"  HorizontalTextAlignment="Center" VerticalOptions="Center" />
+            </Grid>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -16,11 +16,12 @@ namespace HabitTracker
             Routing.RegisterRoute(nameof(CalenderDailyPage),        typeof(CalenderDailyPage));
             Routing.RegisterRoute(nameof(CalenderWeeklyPage),       typeof(CalenderWeeklyPage));
             Routing.RegisterRoute(nameof(CompletedHabitDetailPage), typeof(CompletedHabitDetailPage));
-            Routing.RegisterRoute(nameof(FavoriteHabitDetailPage),          typeof(FavoriteHabitDetailPage));
-            Routing.RegisterRoute(nameof(FavoriteHabitsPage),               typeof(FavoriteHabitsPage));
+            Routing.RegisterRoute(nameof(FavoriteHabitDetailPage),  typeof(FavoriteHabitDetailPage));
+            Routing.RegisterRoute(nameof(FavoriteHabitsPage),       typeof(FavoriteHabitsPage));
             Routing.RegisterRoute(nameof(InfoPage),                 typeof(InfoPage));
             Routing.RegisterRoute(nameof(NewHabitPage),             typeof(NewHabitPage));
             Routing.RegisterRoute(nameof(SelectHabitPage),          typeof(SelectHabitPage));
+            Routing.RegisterRoute(nameof(SettingsPage),             typeof(SettingsPage));
 
             GoToStartPage();
         }

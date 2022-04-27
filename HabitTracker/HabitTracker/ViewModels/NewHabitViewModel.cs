@@ -12,39 +12,42 @@ namespace HabitTracker.ViewModels
     {
         private string _name;
         private string _score;
+        private bool _isDateEnabled;
+        private string _dateAndTime;
+        private DateTime _date;
 
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
-        private bool _isDateEnabled;
         public bool IsDateEnabled { 
             get { return _isDateEnabled; }
             set { SetProperty(ref _isDateEnabled, value); }
         }
 
-
-        private string _dateAndTime;
-        public string DateAndTime { 
-            get {
+        public string DateAndTime
+        {
+            get
+            {
                 return _dateAndTime;
             }
             set
             {
                 _dateAndTime = value;
-                Date = DateTime.ParseExact(value, ViewDateFormat, Culture).Date;
+                Date = DateTime.ParseExact(value, ViewDateFormat, Culture, DateTimeStyles.AssumeUniversal);
                 IsDateEnabled = !string.IsNullOrEmpty(value);
             }
         }
 
-        private DateTime _date;
+        public string DateFormat { get => ViewDateFormat; }
 
         public DateTime Date
         {
             get { return _date; }
-            set { SetProperty(ref _date, value); }
+            // GUI don't show time, so when user configure the date it will overwrite the time part 
+            // so use _time variable for time
+            set { SetProperty(ref _date, value); } 
         }
-
 
         public bool AddToCompleted
         {
@@ -79,7 +82,6 @@ namespace HabitTracker.ViewModels
             CancelCommand = MyCommand.Create(OnCancel);
             PropertyChanged += (_, __) => SaveCommand.ChangeCanExecute();
         }
-
 
         private bool ValidateSave()
         {
@@ -118,14 +120,14 @@ namespace HabitTracker.ViewModels
 
             if(AddToCompleted)
             {
-                if(AutoAddHabitToFavorites)
+                if(IsAutoAddToFavoritesEnabled)
                     await FavoriteHabits.Add(habit);
 
                 var completedHabit = new Habit
                 {
                     Name  = habit.Name,
                     Score = habit.Score,
-                    Date  = Date
+                    Date  = Date.Add(DateTime.Now.TimeOfDay)
                 };
 
                 await CompletedHabits.Add(completedHabit);

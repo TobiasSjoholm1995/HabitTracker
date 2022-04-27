@@ -2,6 +2,7 @@
 using HabitTracker.Views;
 using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using Xamarin.Forms;
 using static HabitTracker.Settings;
@@ -75,7 +76,7 @@ namespace HabitTracker.ViewModels
             {
                 Name  = item.Name,
                 Score = item.Score,
-                Date  = DateTime.ParseExact(Time, ViewDateFormat, Culture)
+                Date  = DateTime.ParseExact(Time, ViewDateFormat, Culture, DateTimeStyles.AssumeUniversal)
             };
 
             await CompletedHabits.Add(habit);

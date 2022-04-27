@@ -33,9 +33,9 @@ namespace HabitTracker.Converters
             {
                 return new Habit
                 {
-                    Name = columns[0],
-                    Id = columns[1],
-                    Date = DateTime.ParseExact(columns[2], ExactDateFormat, Culture),
+                    Name  = columns[0],
+                    Id    = columns[1],
+                    Date  = DateTime.ParseExact(columns[2], ExactDateFormat, Culture, DateTimeStyles.AssumeUniversal),
                     Score = int.Parse(columns[3], NumberStyles.Any, Culture)
                 };
             }
