@@ -76,7 +76,7 @@ namespace HabitTracker.ViewModels
             {
                 Name  = item.Name,
                 Score = item.Score,
-                Date  = DateTime.ParseExact(Time, ViewDateFormat, Culture, DateTimeStyles.AssumeUniversal)
+                Date  = DateTime.ParseExact(Time, ViewDateFormat, Culture).Add(DateTime.Now.TimeOfDay)
             };
 
             await CompletedHabits.Add(habit);

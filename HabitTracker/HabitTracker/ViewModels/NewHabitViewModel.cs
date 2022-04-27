@@ -34,7 +34,7 @@ namespace HabitTracker.ViewModels
             set
             {
                 _dateAndTime = value;
-                Date = DateTime.ParseExact(value, ViewDateFormat, Culture, DateTimeStyles.AssumeUniversal);
+                Date = DateTime.ParseExact(value, ViewDateFormat, Culture);
                 IsDateEnabled = !string.IsNullOrEmpty(value);
             }
         }
