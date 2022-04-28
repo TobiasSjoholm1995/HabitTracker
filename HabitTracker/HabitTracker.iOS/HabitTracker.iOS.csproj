@@ -217,4 +217,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\trashcan.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_info%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_info%403x.png" />
+  </ItemGroup>
 </Project>

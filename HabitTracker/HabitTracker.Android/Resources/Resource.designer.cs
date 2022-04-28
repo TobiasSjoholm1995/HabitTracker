@@ -11686,19 +11686,19 @@ namespace HabitTracker.Droid
 			public const int design_snackbar_background = 2131165291;
 			
 			// aapt resource value: 0x7F070070
-			public const int icon_about = 2131165296;
+			public const int icon_analytics = 2131165296;
 			
 			// aapt resource value: 0x7F070071
-			public const int icon_analytics = 2131165297;
+			public const int icon_calender_daily = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int icon_calender_daily = 2131165298;
+			public const int icon_calender_weekly = 2131165298;
 			
 			// aapt resource value: 0x7F070073
-			public const int icon_calender_weekly = 2131165299;
+			public const int icon_feed = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int icon_feed = 2131165300;
+			public const int icon_info = 2131165300;
 			
 			// aapt resource value: 0x7F070075
 			public const int icon_list = 2131165301;
