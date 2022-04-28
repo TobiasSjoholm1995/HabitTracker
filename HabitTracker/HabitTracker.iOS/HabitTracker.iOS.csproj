@@ -79,9 +79,6 @@
     <BundleResource Include="Resources\icon_about.png" />
     <BundleResource Include="Resources\icon_about%402x.png" />
     <BundleResource Include="Resources\icon_about%403x.png" />
-    <BundleResource Include="Resources\icon_feed.png" />
-    <BundleResource Include="Resources\icon_feed%402x.png" />
-    <BundleResource Include="Resources\icon_feed%403x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20@1x.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -158,15 +155,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\icon_calender%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon_calender%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon_calender.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -192,5 +180,32 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\icon_settings%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_list%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_list%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_calender_daily%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_calender_daily%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_calender_daily.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_calender_weekly%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_calender_weekly%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_calender_weekly.png" />
   </ItemGroup>
 </Project>

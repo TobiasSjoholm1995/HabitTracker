@@ -72,15 +72,15 @@
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:AnalyticsPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Calender - Daily" Icon="icon_calender.png" x:Name="Calender">
+    <FlyoutItem Title="Calender - Daily" Icon="icon_calender_daily.png" x:Name="Calender">
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderDailyPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Calender - Weekly" Icon="icon_calender.png">
+    <FlyoutItem Title="Calender - Weekly" Icon="icon_calender_weekly.png">
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:CalenderWeeklyPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Favorite Habits" Icon="icon_feed.png">
+    <FlyoutItem Title="Favorite Habits" Icon="icon_list.png">
         <ShellContent Route="HabitsPage" ContentTemplate="{DataTemplate local:FavoriteHabitsPage}" />
     </FlyoutItem>
 
