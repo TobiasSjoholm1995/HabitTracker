@@ -15,7 +15,7 @@
                 <GradientStop Color="#9e47e5" Offset="0.55" />
                 <GradientStop Color="#711bb7" Offset="1.0" />
             </LinearGradientBrush>
-
+            
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">

@@ -56,22 +56,45 @@
                 SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="20, 15, 20, 15" x:DataType="model:Habit">
+                        <Grid Padding="20, 0, 20, 0" x:DataType="model:Habit">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="13"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="2"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="0"
-                            Text="{Binding Name}" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                            <Label Grid.Column="1" 
-                            Text="{Binding Score}" 
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="17"
-                            FontAttributes="Bold"
-                            TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}"/>
+                            <Label Grid.Column="0" Grid.Row="1"
+                                   Padding="1,0,1,0"
+                                   Margin="0"
+                                   Text="{Binding Name}" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="16" 
+                                   VerticalOptions="Center" 
+                                   VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Grid.Row="1"
+                                   Padding="1,0,1,0"
+                                   Margin="0"
+                                   Text="{Binding Score}" 
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="{Binding Score,  Converter={StaticResource intColorConverter}, Mode=OneWay}" 
+                                   VerticalOptions="Center" 
+                                   VerticalTextAlignment="Center"/>
+
+                            <BoxView  Margin="0"
+                                   HeightRequest="2"
+                                   BackgroundColor="LightGray"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   Grid.Row="3"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Fill"/>
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer 
