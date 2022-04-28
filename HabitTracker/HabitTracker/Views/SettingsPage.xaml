@@ -48,8 +48,14 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label  Grid.Column="0" Text="Favorite Habits" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
-                <Button Grid.Column="1" WidthRequest="125" Text="Delete" Command="{Binding DeleteFavoritesCommand}"/>
+                <Label  Grid.Column="0" Text="Delete Favorite Habits" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
+                <ImageButton BackgroundColor="{StaticResource Primary}"  
+                             CornerRadius="5" 
+                             Grid.Row="0" Grid.Column="1" 
+                             Command="{Binding DeleteFavoritesCommand}" 
+                             VerticalOptions="Center" 
+                             Source="trashcan.png"
+                             Padding="5"/>
             </Grid>
 
             <Grid Padding="0,10,0,10">
@@ -61,8 +67,14 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label  Grid.Column="0" Text="Completed Habits" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
-                <Button Grid.Row="0" Grid.Column="1" WidthRequest="125" Text="Delete" Command="{Binding DeleteCompletedCommand}" VerticalOptions="Center"/>
+                <Label  Grid.Column="0" Text="Delete Completed Habits" FontAttributes="Bold" FontSize="Body" VerticalOptions="Center"/>
+                <ImageButton BackgroundColor="{StaticResource Primary}"  
+                             CornerRadius="5" 
+                             Grid.Row="0" Grid.Column="1" 
+                             Command="{Binding DeleteCompletedCommand}" 
+                             VerticalOptions="Center" 
+                             Source="trashcan.png"
+                             Padding="5"/>
             </Grid>
 
         </StackLayout>
